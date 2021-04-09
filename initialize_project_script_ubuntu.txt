@@ -1,0 +1,9 @@
+@ECHO OFF
+
+git init
+
+rm -r env
+virtualenv -p python3 env
+pip install -r requirements.txt
+
+PAUSE
