@@ -15,6 +15,15 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# SITE_ROOT = BASE_DIR
+#
+# SITE_URL = 'mycoursework.local'
+# SITE_SCHEME = "http"
+# PARENT_HOST = ".%s" % SITE_URL
+# HOST_PORT = '1896'
+# SITE = "%s://%s:%s" % (SITE_SCHEME, SITE_URL, HOST_PORT)
+# HOST_SCHEME = "http"
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -47,6 +56,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+    'http://manager.mycoursework.local',
 ]
 
 ROOT_URLCONF = 'course_work.urls'
@@ -105,12 +119,21 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+# LANGUAGE_CODE = 'uk'
+# LANGUAGE_FALLBACK_CODE = 'ru'
+# DEFAULT_LANGUAGE = 'en'
+
+# LANGUAGES = (
+#     ('en', _('English')),
+#     ('ru', _('Russian')),
+#     ('uk', _('Ukrainian')),
+# )
+
 TIME_ZONE = 'UTC'
+TIME_ZONE_DEFAULT = 'Europe/Kiev'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
