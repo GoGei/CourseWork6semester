@@ -17,12 +17,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SITE_ROOT = BASE_DIR
 #
-# SITE_URL = 'mycoursework.local'
-# SITE_SCHEME = "http"
-# PARENT_HOST = ".%s" % SITE_URL
-# HOST_PORT = '1896'
-# SITE = "%s://%s:%s" % (SITE_SCHEME, SITE_URL, HOST_PORT)
-# HOST_SCHEME = "http"
+SITE_URL = 'mycoursework.local'
+SITE_SCHEME = "http"
+PARENT_HOST = ".%s" % SITE_URL
+HOST_PORT = '1896'
+SITE = "%s://%s:%s" % (SITE_SCHEME, SITE_URL, HOST_PORT)
+HOST_SCHEME = "http"
 
 
 # Quick-start development settings - unsuitable for production
@@ -113,6 +113,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_AGE = 86400  # one day
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -122,7 +126,7 @@ LANGUAGE_CODE = 'en-us'
 # LANGUAGE_CODE = 'uk'
 # LANGUAGE_FALLBACK_CODE = 'ru'
 # DEFAULT_LANGUAGE = 'en'
-
+#
 # LANGUAGES = (
 #     ('en', _('English')),
 #     ('ru', _('Russian')),
