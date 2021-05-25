@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from django.utils.translation import ugettext_lazy as _
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -46,6 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'core.Offer',
+    'core.Deal',
 ]
 
 MIDDLEWARE = [
@@ -127,11 +132,11 @@ LANGUAGE_CODE = 'en-us'
 # LANGUAGE_FALLBACK_CODE = 'ru'
 # DEFAULT_LANGUAGE = 'en'
 #
-# LANGUAGES = (
-#     ('en', _('English')),
-#     ('ru', _('Russian')),
-#     ('uk', _('Ukrainian')),
-# )
+LANGUAGES = (
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('uk', _('Ukrainian')),
+)
 
 TIME_ZONE = 'UTC'
 TIME_ZONE_DEFAULT = 'Europe/Kiev'
@@ -145,3 +150,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TOOLBAR_ENABLED = True
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+# if TOOLBAR_ENABLED:
+#     MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
