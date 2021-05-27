@@ -17,8 +17,3 @@ def home_offers(request):
     return render(request,
                   'Public/Home/offers.html',
                   {'qs': qs})
-
-
-def home_about(request):
-    return render(request,
-                  'Public/Home/about.html')

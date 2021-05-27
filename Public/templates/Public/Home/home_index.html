@@ -2,6 +2,7 @@
 {% load static i18n %}
 
 {% block content %}
-    <h1>Home page</h1>
+    <h1>{% trans 'Home page' %}</h1>
     !{{ request.user }}!
+    <p>{% trans 'This is my course project' %}</p>
 {% endblock %}

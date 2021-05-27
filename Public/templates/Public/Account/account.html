@@ -2,6 +2,7 @@
 {% load static i18n hosts %}
 
 {% block content %}
-    <h1>Account</h1>
-    !{{ user }}!
+    <h1>{% trans 'Account' %}</h1>
+    <p>{% trans 'Username' %} - {{ user.username|default:"-" }}</p><br>
+    <p>{% trans 'Email' %} - {{ user.email|default:"-" }}</p><br>
 {% endblock %}
