@@ -20,5 +20,5 @@ urlpatterns = [
 
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/$', views.offer_details, name='offer-details'),
 
-    url(r'^(?P<state>\w+)/export/$', views.offer_export, name='offer-export'),
+    url(r'^(?P<state>\w+)/export/(?P<export_to>\w+)$', views.offer_export, name='offer-export'),
 ]

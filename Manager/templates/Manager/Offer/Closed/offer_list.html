@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block action-area %}
-    <a href="{% url 'offer-export' 'closed' %}" type="button" class="btn btn-w-m btn-primary">{% trans 'Export' %}</a>
+    <a href="{% url 'offer-export' 'closed' 'csv' %}" type="button" class="btn btn-w-m btn-primary">{% trans 'Export to cvs' %}</a>
+{#    <a href="{% url 'offer-export' 'closed' 'xls' %}" type="button" class="btn btn-w-m btn-primary">{% trans 'Export xls' %}</a>#}
 {% endblock %}
 
 

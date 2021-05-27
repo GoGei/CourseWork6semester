@@ -1,10 +1,14 @@
+import csv
+import xlwt
+
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.forms import model_to_dict
-
+from django.http import HttpResponse
 from core.Access.decorators import manager_required
+
 from core.Offer.models import Offer
 from core.Deal.models import Deal, DealFile
 from .forms import CreatedOfferAddForm, CreatedOfferEditForm, PickUpOfferEditForm
@@ -221,6 +225,21 @@ def offer_delete_file(request, state, file_id):
     return redirect(reverse('offer-details', args=[state, offer.id]))
 
 
-def offer_export(request, state):
-    print('export')
+def offer_export(request, state, export_to):
+    if export_to == 'csv':
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="offers.csv"'
+
+        writer = csv.writer(response)
+        writer.writerow(['creator', 'manager', 'clients', 'address'])
+
+        offers = Offer.objects.filter(state=Offer.CLOSED).all()
+        for offer in offers:
+            o = [str(offer.creator), str(offer.manager), ', '.join([str(client) for client in offer.clients.all()]), str(offer.address)]
+            writer.writerow(o)
+        return response
+    elif export_to == 'xls':
+        pass
+
+    messages.warning(request, _('Error when export occurred'))
     return redirect(reverse('offer-list', args=[state]))
