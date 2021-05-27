@@ -7,12 +7,15 @@ from core.Deal.models import DealFile, Deal
 
 class DealFileForm(forms.RequestForm):
     file = forms.FileField(label=_('File'), required=True)
+    file_type = forms.ChoiceField(label=_('File type'))
 
     def __init__(self, *args, **kwargs):
         self.model = DealFile
         self.instance = kwargs.pop('instance', None)
         self.offer = kwargs.pop('offer', None)
         super(DealFileForm, self).__init__(*args, **kwargs)
+
+        self.fields['file_type'].choices = DealFile.TYPES
 
         if self.instance:
             self.set_initial(self.instance)
