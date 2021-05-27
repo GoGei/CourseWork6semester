@@ -78,15 +78,15 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 ROOT_HOSTCONF = 'course_work.hosts'
-# DEFAULT_HOST = 'public'
-DEFAULT_HOST = 'manager'
+DEFAULT_HOST = 'public'
+# DEFAULT_HOST = 'manager'
 ROOT_URLCONF = 'course_work.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'core/templates/'),
-                 # os.path.join(BASE_DIR, 'Public/templates/'),
+                 os.path.join(BASE_DIR, 'Public/templates/'),
                  os.path.join(BASE_DIR, 'Manager/templates/'),
                  ],
         'OPTIONS': {
