@@ -1,0 +1,45 @@
+{% extends 'Manager/OfferRequest/offer_request_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">
+        <strong>{{ offer_request.id }}</strong>
+    </li>
+{% endblock %}
+
+{% block action-area %}
+{% endblock %}
+
+
+{% block content %}
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Offer' %}</div>
+                    <div class="col-sm-7">{{ offer_request.offer|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'User' %}</div>
+                    <div class="col-sm-7">{{ offer_request.user|default:"-" }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% if offer_request.archived %}
+    <a type="button" href="{% url 'offer-request-restore' offer_request.id %}?reverse=
+        {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+        {% trans 'Restore' %}
+    </a>
+{% else %}
+    <a type="button" href="{% url 'offer-request-approve' offer_request.id %}">
+        {% trans 'Approve' %}
+    </a>
+    <a type="button" href="{% url 'offer-request-decline' offer_request.id %}">
+        {% trans 'Decline' %}
+    </a>
+{% endif %}
+{% endblock %}

@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'debug_toolbar',
     'sorl.thumbnail',
+    'django_extensions',
     'core.Offer',
     'core.Deal',
     'core.RegistrationsRequest',

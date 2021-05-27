@@ -22,15 +22,13 @@ def account_user(request):
 def account_add_to_viewed(request, offer_id):
     offer = get_object_or_404(Offer, id=offer_id)
 
-    if_viewed_qs = OfferRequest.objects.filter(offer=offer, user=request.user)
-    if if_viewed_qs.exists():
-        messages.warning(request, _('Offer is already viewed'))
-    else:
-        offer_request = OfferRequest()
-        offer_request.offer = offer
-        offer_request.user = request.user
-        offer_request.save()
-        messages.success(request, _('Offer was created'))
+    offer_request, created = OfferRequest.objects.get_or_create(offer=offer, user=request.user)
+    offer_request.offer = offer
+    offer_request.user = request.user
+    offer_request.state = OfferRequest.VIEWED_BY_USER
+    offer_request.archived = None
+    offer_request.save()
+    messages.success(request, _('Offer was added'))
     return redirect(reverse('account'))
 
 
