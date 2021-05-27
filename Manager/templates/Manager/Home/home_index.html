@@ -1,0 +1,6 @@
+{% extends 'Manager/base.html' %}
+
+{% block home-active %}active{% endblock %}
+{% block content %}
+    !{{ request.user }}!
+{% endblock %}

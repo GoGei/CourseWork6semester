@@ -1,0 +1,45 @@
+{% extends 'Manager/Offer/Created/offer_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">
+        <strong>{{ offer.id }}</strong>
+    </li>
+{% endblock %}
+
+{% block action-area %}
+    <a type="button" class="btn btn-w-m btn-primary" href="{% url 'offer-edit' 'created' offer.id %}?reverse=
+        {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+        {% trans 'Edit' %}
+    </a>
+{% endblock %}
+
+
+{% block content %}
+    <div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Creator' %}</div>
+                    <div class="col-sm-7">{{ offer.creator|default:"-" }}</div>
+                </div>
+                {% comment %}<div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Manager' %}</div>
+                    <div class="col-sm-7">{{ offer.manager|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Clients' %}</div>
+                    <div class="col-sm-7">{{ offer.clients.all|default:"-"|join:", " }}</div>
+                </div>{% endcomment %}
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Address' %}</div>
+                    <div class="col-sm-7">{{ offer.address|default:"-" }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+from django.shortcuts import render
+
+from core.Access.decorators import manager_required
+
+
+@manager_required()
+def home_index(request):
+    return render(request,
+                  'Manager/Home/home_index.html')

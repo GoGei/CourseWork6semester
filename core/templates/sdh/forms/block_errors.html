@@ -1,0 +1,7 @@
+{% if field.errors %}
+    {% for item in field.errors %}
+        {% if item %}
+        <span class="form-text m-b-none">{{ item }}</span>
+        {% endif %}
+    {% endfor %}
+{% endif %}

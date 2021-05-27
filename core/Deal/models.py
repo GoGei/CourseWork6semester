@@ -2,21 +2,20 @@ import os
 
 from django.db import models
 from django.contrib.auth.models import User
-# from django.contrib.postgres.fields import JSONField
+from core.Offer.models import Offer
 
 from core.Utils.base_classes import CrmMixin, TranslateMixin
 
 
 class Deal(CrmMixin, TranslateMixin):
     manager = models.ForeignKey(User, on_delete=models.PROTECT, related_name='+')
-    client = models.ForeignKey(User, on_delete=models.PROTECT, related_name='+')
-    offer = models.ForeignKey(User, on_delete=models.PROTECT)
+    offer = models.ForeignKey(Offer, on_delete=models.PROTECT, related_name='+')
 
     class Meta:
         db_table = 'deal'
 
     def __str__(self):
-        return self.address
+        return 'Deal: ' + str(self.pk)
 
     @property
     def label(self):
@@ -24,13 +23,8 @@ class Deal(CrmMixin, TranslateMixin):
 
 
 class DealFile(CrmMixin, TranslateMixin):
-    # TRANSLATED_FIELDS = ['description']
-
     deal = models.ForeignKey('Deal.Deal', on_delete=models.PROTECT)
-    file = models.ImageField()
-    content_type = models.CharField(max_length=100)
-
-    # description_data = JSONField(default=dict)
+    file = models.FileField()
 
     class Meta:
         db_table = 'deal_file'

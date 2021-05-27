@@ -1,0 +1,51 @@
+{% extends 'Manager/User/user_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">
+        <strong>{{ user.id }}</strong>
+    </li>
+{% endblock %}
+
+{% block action-area %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Username' %}</div>
+                    <div class="col-sm-7">{{ user.username|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Email' %}</div>
+                    <div class="col-sm-7">{{ user.email|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'First name' %}</div>
+                    <div class="col-sm-7">{{ user.first_name|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Last name' %}</div>
+                    <div class="col-sm-7">{{ user.last_name|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Active status' %}</div>
+                    <div class="col-sm-7">
+                        {% if user.is_active %}
+                            <label class="label label-primary">{% trans 'Active' %}</label>
+                        {% else %}
+                            <label class="label label-warning">{% trans 'Not active' %}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'Manager/Offer/PickUp/Files/offer_file_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item active">
+    <a href="{% url 'offer-details' state='pick_up' offer_id=offer.id %}"><strong>{% trans 'Add file' %}</strong></a>
+  </li>
+{% endblock %}
+
+
+
+{% block content %}
+      {% include 'base_form.html' with form=form %}
+{% endblock %}

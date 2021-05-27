@@ -1,11 +1,13 @@
-django==2.2.14
-
+Django==2.2.14
+pytz==2019.2
+argparse==1.2.1
 psycopg2-binary==2.8.3
-
-sdh.table==2.0.2
+django-filter==2.2.0
+django-hosts==3.0
 sdh.forms==2.2.8
 
 six==1.15.0
 Pillow==8.1.2
 
 django-debug-toolbar==3.2.1
+xlwt==1.3.0

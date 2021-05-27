@@ -1,0 +1,5 @@
+{% load i18n %}
+<a type="button" href="{% url 'offer-delete-file' 'pick_up' item.id %}?reverse=
+    {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+    {% trans 'Delete' %}
+</a>

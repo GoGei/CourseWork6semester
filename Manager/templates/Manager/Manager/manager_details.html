@@ -1,0 +1,42 @@
+{% extends 'Manager/Manager/manager_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">
+        <strong>{{ manager.id }}</strong>
+    </li>
+{% endblock %}
+
+{% block action-area %}
+    <a type="button" class="btn btn-w-m btn-primary" href="{% url 'manager-edit' manager.id %}?reverse=
+        {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}"
+       title="{% trans 'Edit' %}">
+        <i class="fa fa-pencil-square-o"></i>
+    </a>
+{% endblock %}
+
+
+{% block content %}
+    <div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Email' %}</div>
+                    <div class="col-sm-7">{{ manager.email|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'First name' %}</div>
+                    <div class="col-sm-7">{{ manager.first_name|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Last name' %}</div>
+                    <div class="col-sm-7">{{ manager.last_name|default:"-" }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

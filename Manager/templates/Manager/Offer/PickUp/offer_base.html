@@ -1,0 +1,14 @@
+{% extends 'Manager/base.html' %}
+{% load i18n %}
+
+{% block page-title %}
+  {{ block.super }}
+  {% trans 'Picked up offers' %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item active">
+    <a href="{% url 'offer-list' state='pick_up' %}"><strong>{% trans 'Picked up offers' %}</strong></a>
+  </li>
+{% endblock %}
