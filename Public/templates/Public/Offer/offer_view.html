@@ -14,5 +14,8 @@
             {% endfor %}
         </div>
         <p class="px-3">{{ offer.address }}</p>
+        <p>{{ offer.description|default:"-"|escape }}</p>
     {% endwith %}
+
+    <a type="button" href="{% url 'account-add-to-viewed' offer.id %}">{% trans 'Add to viewed' %}</a>
 {% endblock %}

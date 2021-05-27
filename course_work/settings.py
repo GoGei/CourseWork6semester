@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'core.Offer',
     'core.Deal',
     'core.RegistrationsRequest',
+    'core.OfferRequest',
+    'course_work'
 ]
 
 MIDDLEWARE = [
@@ -87,7 +89,6 @@ CORS_ORIGIN_WHITELIST = [
 
 ROOT_HOSTCONF = 'course_work.hosts'
 DEFAULT_HOST = 'public'
-# DEFAULT_HOST = 'manager'
 ROOT_URLCONF = 'course_work.urls'
 
 TEMPLATES = [
@@ -198,14 +199,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR + 'static/'
-
-MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "htdocs"),
+    os.path.join(BASE_DIR, 'media'),
+    # os.path.join(BASE_DIR, 'static'),
 )
 
 ROW_PER_PAGE = 20
