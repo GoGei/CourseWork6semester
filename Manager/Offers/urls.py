@@ -5,9 +5,11 @@ from . import views
 urlpatterns = [
     url(r'^(?P<state>\w+)$', views.offer_list, name='offer-list'),
 
+    url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/add/file/$', views.offer_add_file, name='offer-add-file'),
+    url(r'^(?P<state>\w+)/(?P<file_id>\d+)/delete/$', views.offer_delete_file, name='offer-delete-file'),
+
     url(r'^(?P<state>\w+)/add/$', views.offer_add, name='offer-add'),
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/edit/$', views.offer_edit, name='offer-edit'),
-
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/archive/$', views.offer_archive, name='offer-archive'),
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/restore/$', views.offer_restore, name='offer-restore'),
 

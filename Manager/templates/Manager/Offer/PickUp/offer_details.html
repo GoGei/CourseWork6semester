@@ -13,6 +13,10 @@
         {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
         {% trans 'Edit' %}
     </a>
+    <a type="button" class="btn btn-w-m btn-primary" href="{% url 'offer-add-file' 'pick_up' offer.id %}?reverse=
+        {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+        {% trans 'Add file' %}
+    </a>
 {% endblock %}
 
 
@@ -43,6 +47,35 @@
                 </div>
             </div>
         </div>
+    </div>
+    {% with deal.dealfile_set.all as file_sq %}
+    {% if not file_sq %}
+        {% trans 'No file offers' %}
+    {% else %}
+        <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table med-table-summary table-caption">
+                <thead>
+                <tr>
+                    <th>{% trans 'File' %}</th>
+                    <th>{% trans 'Actions' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in file_sq %}
+                    <tr>
+                        <td>{{ item.file }}</td>
+                        <td>{% include 'Manager/Offer/PickUp/Files/offer_files_table_action_field.html' with item=item %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    {% endif %}
+    {% endwith %}
+    </div>
+    <div class="panel-body">
     </div>
 </div>
 

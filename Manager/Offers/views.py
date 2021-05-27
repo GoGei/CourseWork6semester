@@ -6,7 +6,9 @@ from django.forms import model_to_dict
 
 from core.Access.decorators import manager_required
 from core.Offer.models import Offer
+from core.Deal.models import Deal, DealFile, DealGalleryFile
 from .forms import CreatedOfferAddForm, CreatedOfferEditForm, PickUpOfferEditForm
+from Manager.Deals.forms import DealFileAddForm, DealFileEditForm, DealGalleryFileAddForm, DealGalleryFileEditForm
 
 
 @manager_required
@@ -106,9 +108,16 @@ def offer_details(request, state, offer_id):
         'deny': 'Manager/Offer/Deny/offer_details.html',
     }
     template = state_template_name_map[state]
-    return render(request,
-                  template,
-                  {'offer': offer})
+    if state != 'created':
+        deal = get_object_or_404(Deal, offer=offer)
+        return render(request,
+                      template,
+                      {'offer': offer,
+                       'deal': deal})
+    else:
+        return render(request,
+                      template,
+                      {'offer': offer})
 
 
 @manager_required
@@ -137,6 +146,12 @@ def offer_pick_up(request, state, offer_id):
     offer.state = Offer.PICK_UP
     offer.manager = request.user
     offer.save()
+
+    deal = Deal()
+    deal.manager = offer.manager
+    deal.offer = offer
+    deal.save()
+
     messages.success(request, _('Offer "%s" was successfully pick up') % offer.pk)
 
     return redirect(reverse('offer-list', args=[state]))
@@ -160,3 +175,37 @@ def offer_close(request, state, offer_id):
     messages.success(request, _('Offer "%s" was successfully closed') % offer.pk)
 
     return redirect(reverse('offer-list', args=[state]))
+
+
+@manager_required
+def offer_add_file(request, state, offer_id):
+    offer = get_object_or_404(Offer, pk=offer_id)
+    form_body = DealFileAddForm(request.POST or None, request.FILES or None, offer=offer)
+
+    if '_cancel' in request.POST:
+        return redirect(reverse('offer-details', args=[state, offer.id]))
+
+    if form_body.is_valid():
+        deal_file = form_body.save()
+        deal_file.save()
+        messages.success(request, _('Deal file "%s" was successfully added') % deal_file.pk)
+        return redirect(reverse('offer-details', args=[state, offer.id]))
+
+    form = {'body': form_body,
+            'title': _('Add offer'),
+            'buttons': {'save': True, 'cancel': True}}
+
+    return render(request,
+                  'Manager/Offer/PickUp/Files/offer_files_add.html',
+                  {'form': form,
+                   'offer': offer})
+
+
+@manager_required
+def offer_delete_file(request, state, file_id):
+    file = get_object_or_404(DealFile, pk=file_id)
+    offer = file.deal.offer
+    file.delete()
+    messages.success(request, _('File "%s" was successfully deleted') % file.pk)
+
+    return redirect(reverse('offer-details', args=[state, offer.id]))

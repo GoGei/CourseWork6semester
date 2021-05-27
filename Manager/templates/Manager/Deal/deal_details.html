@@ -1,0 +1,49 @@
+{% extends 'Manager/Deal/deal_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">
+        <strong>{{ deal.id }}</strong>
+    </li>
+{% endblock %}
+
+{% block action-area %}
+    <a type="button" class="btn btn-w-m btn-primary" href="{% url 'deal-export' deal.id %}?reverse=
+        {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+        {% trans 'Export' %}
+    </a>
+{% endblock %}
+
+
+{% block content %}
+    <div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Manager' %}</div>
+                    <div class="col-sm-7">{{ deal.manager|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Client' %}</div>
+                    <div class="col-sm-7">{{ deal.client|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Offer' %}</div>
+                    <div class="col-sm-7">{{ deal.offer|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Files' %}</div>
+                    <div class="col-sm-7">{{ deal.dealfile_set.all|default:"-"|join:', ' }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Gallery' %}</div>
+                    <div class="col-sm-7">{{ deal.dealgalleryfile_set.all|default:"-"|join:', ' }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

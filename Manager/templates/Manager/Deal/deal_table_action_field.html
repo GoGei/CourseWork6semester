@@ -1,0 +1,7 @@
+{% load i18n %}
+<a type="button" href="{% url 'deal-export' item.id %}">
+    {% trans 'Export' %}
+</a>
+<a type="button" href="{% url 'deal-details' item.id %}">
+    {% trans 'Details' %}
+</a>
