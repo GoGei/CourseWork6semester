@@ -22,21 +22,36 @@ def account_user(request):
 def account_add_to_viewed(request, offer_id):
     offer = get_object_or_404(Offer, id=offer_id)
 
-    if_viewed_qs = OfferRequest.objects.filter(offer=offer, user=request.user)
-    if if_viewed_qs.exists():
-        messages.warning(request, _('Offer is already viewed'))
-    else:
+    offer_request, created = OfferRequest.objects.get_or_create(offer=offer, user=request.user)
+    if offer_request.state == OfferRequest.ACCEPTED:
+        messages.success(request, _('Offer is already approved'))
+    elif offer_request.state == OfferRequest.VIEWED_BY_USER or \
+            offer_request.state == OfferRequest.VIEWED_BY_MANAGER:
+        messages.success(request, _('Offer is already added'))
+    elif offer_request.state == OfferRequest.DECLINED:
         offer_request = OfferRequest()
-        offer_request.offer = offer
-        offer_request.user = request.user
+        offer_request = fill_in_offer_request(offer_request, offer, request.user)
         offer_request.save()
-        messages.success(request, _('Offer was created'))
+        messages.success(request, _('Offer was added'))
+    else:
+        offer_request = fill_in_offer_request(offer_request, offer, request.user)
+        offer_request.save()
+        messages.success(request, _('Offer was added'))
     return redirect(reverse('account'))
+
+
+def fill_in_offer_request(offer_request, offer, user):
+    offer_request.offer = offer
+    offer_request.user = user
+    offer_request.state = OfferRequest.VIEWED_BY_USER
+    offer_request.archived = None
+    return offer_request
 
 
 @login_required
 def account_remove_from_viewed(request, offer_request_id):
     offer_request = get_object_or_404(OfferRequest, id=offer_request_id)
+    offer_request.state = OfferRequest.DECLINED
     offer_request.archive()
     offer_request.save()
     messages.success(request, _('Offer was removed'))

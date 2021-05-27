@@ -10090,3 +10090,25 @@ label.needsclick span {
   min-width: 100px;
   max-width: 120px;
 }
+
+
+.offer-requests-counter {
+  position: relative;
+}
+.offer-requests-counter .summary {
+  position: absolute;
+  background: #ffd241;
+  border-radius: 50%;
+  top: 2px;
+  left: 5px;
+  color: #333;
+  padding: 3px;
+  min-width: 24px;
+  min-height: 24px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.offer-requests-counter .summary span {
+  margin-left: 1px;
+}

@@ -1,0 +1,47 @@
+{% extends 'Manager/OfferRequest/offer_request_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+{% endblock %}
+
+{% block action-area %}
+{% endblock %}
+
+
+{% block content %}
+    {% if not qs %}
+        {% trans 'No offer requests' %}
+    {% else %}
+    <div class="table-responsive">
+    <table class="table med-table-summary table-caption">
+        <thead>
+            <tr>
+                <th>{% trans 'Offer' %}</th>
+                <th>{% trans 'User' %}</th>
+                <th>{% trans 'State' %}</th>
+                <th>{% trans 'Archived' %}</th>
+                <th>{% trans 'Actions' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in qs %}
+                <tr>
+                    <td><a href="{% url 'offer-details' 'pick_up' item.offer.id %}">{{ item.offer|default:"-" }}</a></td>
+                    <td><a href="{% url 'user-details' item.user.id %}">{{ item.user|default:"-" }}</a>></td>
+                    <td>{{ item.state|default:"-" }}</td>
+                    <td>
+                        {% if not item.archived %}
+                        {% trans 'Not archived' %}
+                        {% else %}
+                        {% trans 'Archived' %}
+                        {% endif %}
+                    </td>
+                    <td>{% include 'Manager/OfferRequest/offer_request_table_action_field.html' with item=item %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+    </div>
+    {% endif %}
+{% endblock %}

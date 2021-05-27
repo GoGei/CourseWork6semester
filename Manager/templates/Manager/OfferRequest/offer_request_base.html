@@ -1,0 +1,14 @@
+{% extends 'Manager/base.html' %}
+{% load i18n %}
+
+{% block page-title %}
+  {{ block.super }}
+  {% trans 'Offer requests' %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item active">
+    <a href="{% url 'offer-request-list' %}"><strong>{% trans 'Offer requests' %}</strong></a>
+  </li>
+{% endblock %}
