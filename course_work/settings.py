@@ -14,6 +14,11 @@ import os
 
 from django.utils.translation import ugettext_lazy as _
 
+try:
+    from conf.settings import *
+except ImportError:
+    pass
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -55,6 +60,7 @@ INSTALLED_APPS = [
     'django_filters',
     'sdh.forms',
     'sdh.table',
+    # 'crispy_forms',
     'debug_toolbar',
     'core.Offer',
     'core.Deal',
@@ -129,6 +135,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'coursework6semester',
+#         'USER': 'postgres',
+#         'PASSWORD': 'deretiuk',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -196,3 +213,5 @@ INTERNAL_IPS = [
 
 # if TOOLBAR_ENABLED:
 #     MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
