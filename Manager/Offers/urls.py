@@ -3,7 +3,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^(?P<state>\w+)$', views.offer_list, name='offer-list'),
+    url(r'^(?P<state>\w+)/$', views.offer_list, name='offer-list'),
 
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/add/file/$', views.offer_add_file, name='offer-add-file'),
     url(r'^(?P<state>\w+)/file/(?P<file_id>\d+)/delete/$', views.offer_delete_file, name='offer-delete-file'),
@@ -19,4 +19,6 @@ urlpatterns = [
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/recreate/$', views.offer_deny, name='offer-recreate'),
 
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/$', views.offer_details, name='offer-details'),
+
+    url(r'^(?P<state>\w+)/export/$', views.offer_export, name='offer-export'),
 ]

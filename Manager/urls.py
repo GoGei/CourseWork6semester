@@ -8,7 +8,6 @@ urlpatterns = [
     url(r'^clients/', include('Manager.Clients.urls')),
     url(r'^managers/', include('Manager.Managers.urls')),
     url(r'^offers/', include('Manager.Offers.urls')),
-    url(r'^deals/', include('Manager.Deals.urls')),
     url(r'^login/$', views.manager_login, name='manager-login'),
     url(r'^logout/$', views.manager_logout, name='manager-logout'),
 ]

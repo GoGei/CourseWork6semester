@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block action-area %}
+    <a href="{% url 'offer-export' 'closed' %}" type="button" class="btn btn-w-m btn-primary">{% trans 'Export' %}</a>
 {% endblock %}
 
 
@@ -21,8 +22,6 @@
                 <th>{% trans 'Manager' %}</th>
                 <th>{% trans 'Client' %}</th>
                 <th>{% trans 'Address' %}</th>
-                <th>{% trans 'Archived' %}</th>
-                <th>{% trans 'Actions' %}</th>
             </tr>
             </thead>
             <tbody>
@@ -32,14 +31,6 @@
                     <td>{{ item.manager }}</td>
                     <td>{{ item.clients.all|default:'-'|join:', ' }}</td>
                     <td>{{ item.address }}</td>
-                    <td>
-                        {% if not item.archived %}
-                        {% trans 'Not archived' %}
-                        {% else %}
-                        {% trans 'Archived' %}
-                        {% endif %}
-                    </td>
-                    <td>{% include 'Manager/Offer/Closed/offer_table_action_field.html' with item=item %}</td>
                 </tr>
             {% endfor %}
             </tbody>

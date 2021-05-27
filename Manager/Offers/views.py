@@ -105,7 +105,7 @@ def offer_details(request, state, offer_id):
         'created': 'Manager/Offer/Created/offer_details.html',
         'pick_up': 'Manager/Offer/PickUp/offer_details.html',
         'closed': 'Manager/Offer/Closed/offer_details.html',
-        'deny': 'Manager/Offer/Deny/offer_details.html',
+        # 'deny': 'Manager/Offer/Deny/offer_details.html',
     }
     template = state_template_name_map[state]
     if state != 'created':
@@ -143,6 +143,9 @@ def offer_restore(request, state, offer_id):
 @manager_required
 def offer_pick_up(request, state, offer_id):
     offer = get_object_or_404(Offer, pk=offer_id)
+    if offer.archived:
+        messages.warning(request, _('Offer %s archived!') % offer.pk)
+        return redirect(reverse('offer-list', args=[state]))
     offer.state = Offer.PICK_UP
     offer.manager = request.user
     offer.save()
@@ -160,6 +163,9 @@ def offer_pick_up(request, state, offer_id):
 @manager_required
 def offer_deny(request, state, offer_id):
     offer = get_object_or_404(Offer, pk=offer_id)
+    if offer.archived:
+        messages.warning(request, _('Offer %s archived!') % offer.pk)
+        return redirect(reverse('offer-list', args=[state]))
     offer.state = Offer.DENY
     offer.save()
     messages.success(request, _('Offer "%s" was successfully deny') % offer.pk)
@@ -170,6 +176,9 @@ def offer_deny(request, state, offer_id):
 @manager_required
 def offer_close(request, state, offer_id):
     offer = get_object_or_404(Offer, pk=offer_id)
+    if offer.archived:
+        messages.warning(request, _('Offer %s archived!') % offer.pk)
+        return redirect(reverse('offer-list', args=[state]))
     offer.state = Offer.CLOSED
     offer.save()
     messages.success(request, _('Offer "%s" was successfully closed') % offer.pk)
@@ -205,7 +214,13 @@ def offer_add_file(request, state, offer_id):
 def offer_delete_file(request, state, file_id):
     file = get_object_or_404(DealFile, pk=file_id)
     offer = file.deal.offer
+    pk = file.pk
     file.delete()
-    messages.success(request, _('File "%s" was successfully deleted') % file.pk)
+    messages.success(request, _('File "%s" was successfully deleted') % pk)
 
     return redirect(reverse('offer-details', args=[state, offer.id]))
+
+
+def offer_export(request, state):
+    print('export')
+    return redirect(reverse('offer-list', args=[state]))
