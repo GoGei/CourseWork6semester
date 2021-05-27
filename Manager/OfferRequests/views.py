@@ -1,5 +1,8 @@
+from django.conf import settings
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from core.Access.decorators import manager_required
@@ -32,7 +35,7 @@ def offer_request_approve(request, offer_request_id):
     offer_request.state = OfferRequest.ACCEPTED
     offer_request.save()
     messages.success(request, _('Offer "%s" was successfully accepted') % offer_request.pk)
-
+    _send_mail(offer_request)
     return redirect(reverse('offer-request-list'))
 
 
@@ -43,7 +46,7 @@ def offer_request_decline(request, offer_request_id):
     offer_request.archive()
     offer_request.save()
     messages.success(request, _('Offer "%s" was successfully declined and archived') % offer_request.pk)
-
+    _send_mail(offer_request)
     return redirect(reverse('offer-request-list'))
 
 
@@ -54,7 +57,6 @@ def offer_request_restore(request, offer_request_id):
     offer_request.archived = None
     offer_request.save()
     messages.success(request, _('Offer "%s" was successfully restored') % offer_request.pk)
-
     return redirect(reverse('offer-request-list'))
 
 
@@ -65,3 +67,22 @@ def offer_request_counter(request):
     counter = qs.count()
     return JsonResponse({'success': True,
                          'counter': counter})
+
+
+def _send_mail(offer_request):
+    subject = 'Offer request message'
+    message = render_to_string(
+        'Manager/Messages/offer_request_message.html',
+        {
+            'user': str(offer_request.user),
+            'offer': str(offer_request.offer),
+            'result': str(offer_request.state),
+        }
+    )
+    try:
+        from_email = settings.EMAIL_HOST_USER
+        to_list = [offer_request.user.email, settings.EMAIL_HOST_USER]
+        send_mail(subject, message, from_email, to_list, fail_silently=True)
+        print('sent')
+    except Exception:
+        print('SEND ERROR!')

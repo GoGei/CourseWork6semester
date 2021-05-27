@@ -1,0 +1,4 @@
+{% load i18n %}
+{% autoescape off %}
+{% trans 'Dear' %} {{ user }}, {% trans 'Your offer '%} {{ offer }} {% trans 'request was' %} {{ result }} {% trans 'by manager' %}.
+{% endautoescape %}

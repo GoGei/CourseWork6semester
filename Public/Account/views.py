@@ -28,11 +28,6 @@ def account_add_to_viewed(request, offer_id):
     elif offer_request.state == OfferRequest.VIEWED_BY_USER or \
             offer_request.state == OfferRequest.VIEWED_BY_MANAGER:
         messages.success(request, _('Offer is already added'))
-    elif offer_request.state == OfferRequest.DECLINED:
-        offer_request = OfferRequest()
-        offer_request = fill_in_offer_request(offer_request, offer, request.user)
-        offer_request.save()
-        messages.success(request, _('Offer was added'))
     else:
         offer_request = fill_in_offer_request(offer_request, offer, request.user)
         offer_request.save()
