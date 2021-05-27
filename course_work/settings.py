@@ -223,3 +223,4 @@ INTERNAL_IPS = [
 #     MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
