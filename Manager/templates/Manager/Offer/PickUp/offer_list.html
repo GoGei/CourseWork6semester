@@ -1,0 +1,49 @@
+{% extends 'Manager/Offer/PickUp/offer_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+{% endblock %}
+
+{% block action-area %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="table-responsive">
+    {% if not qs %}
+        {% trans 'No pick up offers' %}
+    {% else %}
+    <table class="table med-table-summary table-caption">
+        <thead>
+            <tr>
+                <th>{% trans 'Creator' %}</th>
+                <th>{% trans 'Manager' %}</th>
+                <th>{% trans 'Client' %}</th>
+                <th>{% trans 'Address' %}</th>
+                <th>{% trans 'Archived' %}</th>
+                <th>{% trans 'Actions' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in qs %}
+                <tr>
+                    <td>{{ item.creator }}</td>
+                    <td>{{ item.manager }}</td>
+                    <td>{{ item.clients.all|default:'-'|join:', ' }}</td>
+                    <td>{{ item.address }}</td>
+                    <td>
+                        {% if not item.archived %}
+                        {% trans 'Not archived' %}
+                        {% else %}
+                        {% trans 'Archived' %}
+                        {% endif %}
+                    </td>
+                    <td>{% include 'Manager/Offer/PickUp/offer_table_action_field.html' with item=item %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+    {% endif %}
+    </div>
+{% endblock %}

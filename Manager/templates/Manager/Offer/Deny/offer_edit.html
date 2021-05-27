@@ -1,0 +1,18 @@
+{% extends 'Manager/Offer/Deny/offer_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+    <li class="breadcrumb-item">
+        <a href="{% url 'offer-details' 'deny' obj_id %}"><strong>{{ obj_id }}</strong></a>
+    </li>
+  <li class="breadcrumb-item active">
+    <strong>{% trans 'Edit' %}</strong>
+  </li>
+{% endblock %}
+
+
+
+{% block content %}
+      {% include 'base_form.html' with form=form %}
+{% endblock %}

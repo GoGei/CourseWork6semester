@@ -1,0 +1,41 @@
+{% extends 'Manager/Offer/Deny/offer_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">
+        <strong>{{ offer.id }}</strong>
+    </li>
+{% endblock %}
+
+{% block action-area %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Creator' %}</div>
+                    <div class="col-sm-7">{{ offer.creator|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Manager' %}</div>
+                    <div class="col-sm-7">{{ offer.manager|default_if_none:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Clients' %}</div>
+                    <div class="col-sm-7">{{ offer.clients.all|default:"-"|join:", " }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Address' %}</div>
+                    <div class="col-sm-7">{{ offer.address|default:"-" }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

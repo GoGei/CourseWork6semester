@@ -1,0 +1,38 @@
+{% extends 'Manager/Manager/manager_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+{% endblock %}
+
+{% block action-area %}
+  <a href="{% url 'manager-add' %}" type="button" class="btn btn-w-m btn-primary">{% trans 'Add' %}</a>
+{% endblock %}
+
+
+{% block content %}
+    <div class="table-responsive">
+    <table class="table med-table-summary table-caption">
+        <thead>
+            <tr>
+                <th>{% trans 'First name' %}</th>
+                <th>{% trans 'Last name' %}</th>
+                <th>{% trans 'Middle name' %}</th>
+                <th>{% trans 'Email' %}</th>
+                <th>{% trans 'Actions' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in qs %}
+                <tr>
+                    <td>{{ item.first_name }}</td>
+                    <td>{{ item.last_name }}</td>
+                    <td>{{ item.middle_name }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{% include 'Manager/Manager/manager_table_action_field.html' with item=item %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+    </div>
+{% endblock %}

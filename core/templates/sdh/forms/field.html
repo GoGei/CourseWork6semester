@@ -1,0 +1,45 @@
+{% load sdhforms %}
+{% load filters %}
+
+{% if field.is_hidden %}
+  {{ field }}
+{% else %}
+
+  <div class="form-group {% if field.errors %}has-error{% endif %}">
+
+    <label>
+      {% if field.field.required %}
+        {% include 'sdh/forms/icon_required.html' %}
+      {% else %}
+        {{ field.label }}
+      {% endif %}
+    </label>
+
+    {% if field.field.widget|get_class == 'CheckboxInput' %}
+      <div class="checkbox c-checkbox needsclick">
+        <label class="needsclick">
+          {% sdh_render_field field %}
+          <span class="fa fa-check"></span>
+        </label>
+      </div>
+    {% else %}
+      {% sdh_render_field field class='form-control' %}
+    {% endif %}
+
+    {% if field.help_text %}
+      <p>
+        <small class="text-muted">{{ field.help_text }}</small>
+      </p>
+    {% endif %}
+
+    {% if field.errors %}
+      <ul class="parsley-errors-list filled" id="parsley-id-5">
+        {% for item in field.errors %}
+          <li class="parsley-required">{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+    {% endif %}
+
+  </div>
+{% endif %}

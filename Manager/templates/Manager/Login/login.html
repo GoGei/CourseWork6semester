@@ -1,0 +1,65 @@
+{% load i18n static sdhforms %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> | Login</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/landing/style.css' %}">
+</head>
+
+<body class="gray-bg">
+
+    <main class="admin-login">
+        <div class="admin-login-bg">
+            <form data-parsley-validate="" novalidate="" action="" method="post" autocomplete="off">
+                {% csrf_token %}
+                {% include 'block_non_field_errors.html' %}
+                {% with field=form.email %}
+                <div class="form-group {% if field.errors %} has-error{% endif %}">
+                    <input type="text" name="email" id="id_email" class="form-control" value="{{ form.email.value }}" placeholder="{% trans 'Email' %} *" required>
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="error-message text-right col-xs-12 text text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% endwith %}
+                {% with field=form.password %}
+                <div class="form-group password-group {% if field.errors %} has-error{% endif %}">
+                    <input type="password" name="password" id="id_password" class="form-control" placeholder="{% trans 'Password' %} *">
+                    <span class="password-icon"></span>
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="error-message text-right col-xs-12 text text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% endwith %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-brand btn-register w-100">{% trans 'Login' %}</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Mainly scripts -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript">
+        // password icon
+        $(document).on('click', '.password-icon', function () {
+            $(this).toggleClass("password-icon--crossed");
+            var input = $("#id_password");
+            input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password')
+        });
+    </script>
+
+</body>
+
+</html>

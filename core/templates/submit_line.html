@@ -1,0 +1,34 @@
+{% load i18n %}
+
+{% if buttons.save %}<button type="submit" data-js-id="save-button" value="{% trans 'Save' %}" class="btn btn-width text-uppercase btn-primary" name="_save">{% trans 'Save' %}</button>{% endif %}
+{% if buttons.apply %}<button type="submit" data-js-id="save-button" value="{% trans 'Apply' %}" class="btn btn-sm btn-primary" name="_save">{% trans 'Apply' %}</button>{% endif %}
+{% if buttons.upload_video %}<input type="submit" data-js-id="save-button" value="{% trans 'Upload video' %}" class="btn btn-sm btn-primary" name="_save" {% if buttons.onclick_save %}onclick="return {{ buttons.onclick_save }}"{% endif %}/>{% endif %}
+{% if buttons.save_and_edit %}<input type="submit" value="{% trans 'Save and Edit' %}" class="btn btn-sm btn-primary" name="_save_and_edit" {% if buttons.onclick_save %}onclick="return {{ buttons.onclick_save_and_edit }}"{% endif %}/>{% endif %}
+{% if buttons.run %}<input type="submit" value="{% trans 'Run' %}" class="btn btn-sm btn-success" name="_run" {% if buttons.onclick_save %}onclick="return {{ buttons.onclick_save }}"{% endif %}/>{% endif %}
+{% if buttons.send %}<input type="submit" value="{% trans 'Send' %}" class="btn btn-sm btn-primary" name="_send" {% if buttons.onclick_send %}onclick="return {{ buttons.onclick_send }}"{% endif %}/>{% endif %}
+{% if buttons.next %}<button type="submit" data-js-id="next-button" value="{% trans 'Next' %}" class="btn btn-sm btn-acting" name="_next">{% trans 'Next' %} {{ buttons.onclick_attrib }} </button>{% endif %}
+{% if buttons.upload %}<input type="submit" value="{% trans 'Upload' %}" class="default" name="_upload" {% if buttons.onclick_upload %}onclick="return {{ buttons.onclick_upload }}"{% endif %}/>{% endif %}
+{% if buttons.add %}<input type="submit" value="{% trans 'Add' %}" class="btn btn-sm btn-success" name="_add" {{ buttons.add.onclick_attrib }}/>{% endif %}
+{% if buttons.delete %}<input type="submit" value="{% trans 'Delete' %}" class="btn btn-sm btn-danger" name="_delete" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.export %}<input type="submit" value="{% trans 'Export' %}" name="_export" {{ onclick_attrib }}/>{%endif%}
+{% if buttons.request %}<input type="submit" value="{% trans 'Request' %}" class="btn btn-sm btn-primary" name="_request" {{ onclick_attrib }}/>{%endif%}
+{% if buttons.create %}<button type="submit" value="{% trans 'Create' %}" class="btn btn-sm btn-acting" name="_create" {{ onclick_attrib }}>{% trans 'Create' %}</button>{% endif %}
+{% if buttons.new %}<input type="submit" value="{% trans 'New' %}" name="_new" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.save_as_new %}<input type="submit" value="{% trans 'Save as new' %}" name="_saveasnew" {{ onclick_attrib }}/>{%endif%}
+{% if buttons.save_and_add_another %}<input type="submit" value="{% trans 'Save and add another' %}" class="btn btn-sm btn-primary" name="_addanother" {{ onclick_attrib }} />{% endif %}
+{% if buttons.save_and_continue %}<input type="submit" value="{% trans 'Save and continue editing' %}" name="_continue" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.search %}<button type="submit" value="{% trans 'Search' %}" name="_search" {{ onclick_attrib }} class="btn btn-sm btn-acting">{% trans 'Search' %}</button>{% endif %}
+{% if buttons.archive %}<input type="submit" value="{% trans 'Archive' %}" name="_archive" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.back %}<input type="submit" value="{% trans 'Back' %}" class="btn btn-sm btn-grey" name="_back" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.close %}<input type="submit" value="{% trans 'Close' %}" class="btn btn-sm btn-danger" name="_close" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.cancel %}<input type="submit" data-js-id="cancel-button" class="btn btn-width text-uppercase btn-default" value="{% if buttons.cancel.label %}{{ buttons.cancel.label }}{% else %}{% trans 'Cancel' %}{% endif %}" name="_cancel" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.reset %}<input type="submit" data-js-id="cancel-button" class="btn btn-sm btn-outline-primary" value="{% if buttons.reset.label %}{{ buttons.reset.label }}{% else %}{% trans 'Reset' %}{% endif %}" name="_reset" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.delete_link %}<p class="deletelink-box"><a href="{{ delete_link }}" class="deletelink">{% trans "Delete" %}</a></p>{% endif %}
+{% if buttons.skip %}<input type="submit" value="{% trans 'Skip' %}" {% if buttons.skip.onclick_attrib %} onclick="{{ buttons.skip.onclick_attrib }}"{% endif %}/>{% endif %}
+{% if buttons.capture %}<input type="submit" value="{% trans 'Capture' %}" class="btn btn-sm btn-primary" name="_cancel" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.convert %}<input type="submit" value="{% trans 'Convert' %}" id="_convert" name="_convert" class="btn btn-sm btn-primary" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.event_reject or buttons.promotion_reject %}<input type="submit" value="{% trans 'Reject' %}" id="_reject" name="_reject" class="btn btn-sm btn-warning" {{ onclick_attrib }}/>{% endif %}
+{% if buttons.xlsx_export %}<button type="submit" value="{% trans 'Export to Excel' %}" class="btn btn-sm btn-acting" name="_xlsx" {{ onclick_attrib }}>{% trans 'Export to Excel' %}</button>{%endif%}
+{% if buttons.print %}<button type="submit" value="{% trans 'Print' %}" class="btn btn-sm btn-acting" name="_print" {{ onclick_attrib }}>{% trans 'Print' %}</button>{% endif %}
+{% if buttons.update %}<button type="submit" data-js-id="save-button" value="{% trans 'Update' %}" class="btn btn-sm btn-acting" name="_save">{% trans 'Update' %}</button>{% endif %}
+{% if buttons.next_step %}<button type="submit" data-js-id="save-button" value="{% trans 'Next' %}" class="btn btn-sm btn-acting" name="_save">{% trans 'Update' %}</button>{% endif %}

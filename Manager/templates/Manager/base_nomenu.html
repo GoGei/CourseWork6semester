@@ -1,0 +1,164 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Course project{% endblock %}</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/plugins/select2/select2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/plugins/select2/select2-bootstrap4.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+
+</head>
+
+{#{% activate_current_timezone as TIMEZONE %}#}
+<body class="">
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li>
+                        <a href="{% url 'home-index' %}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">{% trans 'Home' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user-list' %}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">{% trans 'Clients' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'manager-list' %}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">{% trans 'Managers' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'offer-list' state='created' %}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">{% trans 'Offers created' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'offer-list' state='pick_up' %}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">{% trans 'Pick up offers' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'offer-list' state='closed' %}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">{% trans 'Closed offers' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'offer-list' state='deny' %}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">{% trans 'Deny offers' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">{% trans 'Deals' %}</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                    {% get_available_languages as LANGUAGES %}
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">{% trans 'Manager Panel' %}</span>
+                        </li>
+                        <li id="selectHolder" class="nav-item">
+                            <form id="select-language" action="{% url 'set_language' %}" method="POST">
+{#                            <form id="select-language" action="#" method="POST">#}
+                                {% csrf_token %}
+                                <select name="language" class="selectpicker language-select">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                                        selected{% endif %}>{{ language.code|upper }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </form>
+                        </li>
+                        <li>
+                            <a href="{% url 'manager-logout' %}">
+                                <i class="fa fa-sign-out"></i>{% trans 'Log out' %}
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-8">
+                    <h2>{% block page-title %}{% endblock %}</h2>
+                    <ol class="breadcrumb">
+                        {% block breadcrumbs %}
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'home-index' %}">{% trans 'Main page' %}</a>
+                        </li>
+                        {% endblock %}
+                    </ol>
+                </div>
+                <div class="col-sm-4">
+                    <div class="title-action">
+                        {% block action-area %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content">
+                {% block messages %}
+                <div class="row">
+                    <div id="id_messages" class="col-sm-12 col-xs-12 col-md-12">
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% include 'messages.html' %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endblock %}
+
+                {% block content %}
+                {% trans 'Nocontent page' %}
+                {% endblock %}
+            </div>
+            <div class="footer">
+                <div>
+                    <strong>Course project</strong>&copy; {% now 'Y' %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootbox.min.js' %}"></script>
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/select2.min.js' %}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/langswitcher.js' %}"></script>
+
+    {% block extrajs %}
+    {% endblock %}
+
+
+</body>
+
+</html>

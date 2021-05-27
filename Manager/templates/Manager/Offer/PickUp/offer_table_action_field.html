@@ -1,0 +1,25 @@
+{% load i18n %}
+<a type="button" href="{% url 'offer-edit' 'pick_up' item.id %}?reverse=
+        {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+    {% trans 'Edit' %}
+</a>
+{% if not item.archived %}
+<a type="button" href="{% url 'offer-archive' 'pick_up' item.id %}?reverse=
+    {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+    {% trans 'Archive' %}
+</a>
+{% else %}
+    <a type="button" href="{% url 'offer-restore' 'pick_up' item.id %}?reverse=
+    {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+    {% trans 'Restory' %}
+</a>
+{% endif %}
+<a type="button" href="{% url 'offer-close' 'pick_up' item.id %}">
+    {% trans 'Close' %}
+</a>
+<a type="button" href="{% url 'offer-deny' 'pick_up' item.id %}">
+    {% trans 'Deny' %}
+</a>
+<a type="button" href="{% url 'offer-details' 'pick_up' item.id %}">
+    {% trans 'Details' %}
+</a>

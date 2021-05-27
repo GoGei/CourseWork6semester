@@ -1,0 +1,14 @@
+{% extends 'Manager/base.html' %}
+{% load i18n %}
+
+{% block page-title %}
+  {{ block.super }}
+  {% trans 'Managers' %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item active">
+    <a href="{% url 'manager-list' %}"><strong>{% trans 'Managers' %}</strong></a>
+  </li>
+{% endblock %}

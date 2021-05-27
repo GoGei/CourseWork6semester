@@ -1,0 +1,16 @@
+{% extends 'Manager/User/user_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+{% endblock %}
+
+{% block action-area %}
+{% endblock %}
+
+
+{% block content %}
+    {% for q in qs %}
+        {{ q }}
+    {% endfor %}
+{% endblock %}

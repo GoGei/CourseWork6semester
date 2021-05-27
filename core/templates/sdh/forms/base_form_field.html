@@ -1,0 +1,15 @@
+{% load sdhforms %}
+
+
+<div class="row form-group {% if field.errors %} has-error{% endif %} {% if field.is_hidden %}hidden{% endif %} ">
+    {% if field.field.required %}
+      <label class="col-sm-2 col-form-label" for="{{ field.id_for_label }}">{% include 'sdh/forms/icon_required.html' %}</label>
+    {% else %}
+      <label class="col-sm-2 col-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {% endif %}
+
+  <div class="col-sm-10">
+      {% sdh_render_field field class='form-control' %}
+  {% include 'sdh/forms/block_errors.html' %}
+  </div>
+</div>

@@ -1,0 +1,124 @@
+{% load sdhforms %}
+{% load i18n %}
+
+<div id="formset-{{ form_set.prefix }}">
+  <div class="panel-heading{% if title %} border-top-grey{% endif %}">
+    {% block add_button %}
+      <div class="row">
+        <a href="#" id="formset-add-{{ form_set.prefix }}" class="mb-sm btn btn-acting formset-add-btn pull-right"
+           role="button">
+          {% trans 'Add' %}
+        </a>
+        <h4>{% if form_set.title %}{{ form_set.title }}{% else %}{% trans title %}{% endif %}</h4>
+      </div>
+    {% endblock %}
+  </div>
+
+  <div class="panel-body">
+    <div id="box-{{ form_set.prefix }}" class="box-content sortable_div">
+      {{ form_set.management_form }}
+      <input type="hidden" name="{{ form_set.prefix }}-NEXT_INDEX" value="{{ form_set.total_form_count }}"
+             id="id_{{ form_set.prefix }}-NEXT_INDEX"/>
+      {% if form_set.non_form_errors %}
+        <div class="clearfix">
+          <div class="col-sm-12 alert alert-warning">
+            {{ form_set.non_form_errors }}
+          </div>
+        </div>
+      {% endif %}
+
+      <div>
+        <table id="table_{{ form_set.prefix }}" class="table table-bordered dataTable">
+          <thead>
+          <tr role="row">
+            {% if form_set.allow_reorder %}
+              <th class=""><span class=""></span></th>
+            {% endif %}
+            {% for field in form_set.empty_form %}
+              {% if not field.is_hidden %}
+                <th role="columnheader">
+                  {% if field.field.required %}
+                    {% include 'icon_required.html' %}
+                  {% else %}
+                    {{ field.label }}
+                  {% endif %}
+                </th>
+              {% endif %}
+            {% endfor %}
+          </tr>
+          </thead>
+
+          <tr id="table-empty-row-{{ form_set.prefix }}" style="display: None;">
+            {% if form_set.allow_reorder %}
+              <td class="reorder"><span class="fa fa-reorder"></span></td>
+            {% endif %}
+            {% for bound in form_set.empty_form %}
+              {% if bound.is_hidden %}
+                {{ bound }}
+              {% else %}
+                <td>
+                  {% include "base_inline_formset_field.html" %}
+                  {{ form.fields.DELETE.value }}
+                </td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+
+          {% for form in form_set.forms %}
+            <tr id="row_{{ form_set.prefix }}_{{ forloop.counter }}"
+                class="{% cycle odd even %} {% if form.DELETE.value %} hidden{% endif %}">
+              {% if form_set.allow_reorder %}
+                <td class="reorder"><span class="fa fa-reorder"></span></td>
+              {% endif %}
+              {% for bound in form %}
+                {% if bound.is_hidden %}
+                  {{ bound }}
+                {% else %}
+                  <td style="max-width: 150px">
+                    {% include "base_inline_formset_field.html" %}
+                  </td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function widgetsInit(newForm) {
+            let df = _locale.setBrowserLocaleAsDeafult();
+            df.then(function () {
+                moment.updateLocale(_locale.defaultLocale, {
+                    week: {dow: 1} // Monday is the first day of the week
+                });
+
+                newForm.container.find('.datepicker').datetimepicker({
+                    viewMode: 'days',
+                    format: 'DD.MM.YYYY',
+                    locale: _locale.defaultLocale
+                });
+                newForm.container.find('.timepicker').datetimepicker({
+                    format: "HH:mm",
+                    disabledTimeIntervals: [[moment({h: '0'}), moment({h: '6'})], [moment({h: '20', m: '00'}), moment({h: '24'})]],
+                    stepping: 15
+                });
+            });
+            newForm.container.find(":input").inputmask();
+            {{ extra_widget_init }}
+        }
+        {% if form_set.allow_reorder %}
+            var allow_reorder = true;
+        {% else %}
+            var allow_reorder = false;
+        {% endif %}
+        let prefix = '{{ form_set.prefix }}';
+        let container_id = 'formset-' + prefix;
+        let container = $('#' + container_id);
+        let formset = new FormSet(container, prefix, widgetsInit, false, allow_reorder);
+        console.log(formset)
+    })
+</script>

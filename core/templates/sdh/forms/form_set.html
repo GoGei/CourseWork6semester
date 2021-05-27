@@ -1,0 +1,17 @@
+<div class="ufia-form">
+  <form class="{% if formset.class %} {{ formset.class }}{% endif %} form-horizontal" data-js-id="form" novalidate
+        action="{{ formset.url }}" method="{% block formset.method %}POST{% endblock %}" {% if formset.form_id %}
+        id="{{ formset.form_id }}" {% endif %}{% if formset.onsubmit %} onsubmit="{{ formset.onsubmit }}"{% endif %}>
+    {% csrf_token %}
+    <div class="panel">
+      <div class="panel-body">
+        {% include 'base_inline_formset.html' with form_set=formset.body title=formset.title extra_widget_init=widget_init %}
+      </div>
+      <div class="panel-footer">
+        <div class="text-right">
+          {% include "submit_line.html" with buttons=formset.buttons %}
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

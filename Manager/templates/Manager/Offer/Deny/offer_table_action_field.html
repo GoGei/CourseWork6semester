@@ -1,0 +1,18 @@
+{% load i18n %}
+{% if not item.archived %}
+<a type="button" href="{% url 'offer-archive' 'deny' item.id %}?reverse=
+    {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+    {% trans 'Archive' %}
+</a>
+{% else %}
+    <a type="button" href="{% url 'offer-restore' 'deny' item.id %}?reverse=
+    {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+    {% trans 'Restory' %}
+</a>
+{% endif %}
+<a type="button" href="{% url 'offer-pick-up' 'deny' item.id %}">
+    {% trans 'Pick up' %}
+</a>
+<a type="button" href="{% url 'offer-details' 'deny' item.id %}">
+    {% trans 'Details' %}
+</a>
