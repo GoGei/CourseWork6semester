@@ -1,0 +1,6 @@
+psql
+create database coursework6semester;
+CREATE USER my_course6_root WITH PASSWORD 'my_course6_root_password';
+ALTER ROLE my_course6_root SET client_encoding TO ‘utf8’;
+GRANT ALL PRIVILEGES ON DATABASE coursework6semester TO my_course6_root;
+
