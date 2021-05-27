@@ -13,7 +13,7 @@ def home_contacts(request):
 
 
 def home_offers(request):
-    qs = Offer.objects.filter(state=Offer.PICK_UP).all().order_by('-created')
+    offers = Offer.objects.active().filter(state=Offer.PICK_UP).all().order_by('-created')
     return render(request,
                   'Public/Home/offers.html',
-                  {'qs': qs})
+                  {'offers': offers})

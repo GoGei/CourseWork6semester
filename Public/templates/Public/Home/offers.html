@@ -1,9 +1,14 @@
 {% extends 'Public/base_template.html' %}
-{% load static i18n %}
+{% load static i18n thumbnail %}
 
 {% block content %}
-    <h1>Offers page</h1>
-    {% for e in qs %}
-        !{{ e }}!<br>
+    <h1>{% trans 'Offers page' %}</h1>
+    {% for offer in offers %}
+        <a href="#">
+            <div class="media">
+                <img class="rounded-circle account-img" src="{{ offer.get_cover.url }}"/>
+            </div>
+            <div class="small">{{ offer.address }}</div>
+        </a>
     {% endfor %}
 {% endblock %}

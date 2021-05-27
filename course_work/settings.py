@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'sdh.table',
     'crispy_forms',
     'debug_toolbar',
+    'sorl.thumbnail',
     'core.Offer',
     'core.Deal',
     'core.RegistrationsRequest',

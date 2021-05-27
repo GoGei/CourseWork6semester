@@ -33,3 +33,22 @@ class Offer(CrmMixin, TranslateMixin):
     @property
     def label(self):
         return self.address
+
+    @property
+    def get_cover(self):
+        from core.Deal.models import DealFile, Deal
+        deal = Deal.objects.active().get(offer=self)
+        files = DealFile.objects.active().filter(deal=deal)
+        cover = files.filter(file_type=DealFile.COVER)
+        if cover:
+            return cover.first().file
+        return None
+
+    @property
+    def get_gallery(self):
+        from core.Deal.models import DealFile, Deal
+        deal = Deal.objects.active().get(offer=self)
+        files = DealFile.objects.active().filter(deal=deal)
+        gallery = files.filter(file_type=DealFile.GALLERY)
+        gallery = [item.file for item in gallery]
+        return gallery
