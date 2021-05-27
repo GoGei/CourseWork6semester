@@ -1,12 +1,8 @@
 from django.shortcuts import render
 from core.Offer.models import Offer
-from django.contrib.auth.models import User
-from django.contrib.auth import login
 
 
 def home_index(request):
-    # user = User.objects.get(email='rich.290401@gmail.com')
-    # login(request, user)
     return render(request,
                   'Public/Home/home_index.html')
 

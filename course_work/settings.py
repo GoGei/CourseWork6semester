@@ -60,10 +60,11 @@ INSTALLED_APPS = [
     'django_filters',
     'sdh.forms',
     'sdh.table',
-    # 'crispy_forms',
+    'crispy_forms',
     'debug_toolbar',
     'core.Offer',
     'core.Deal',
+    'core.RegistrationsRequest',
 ]
 
 MIDDLEWARE = [
