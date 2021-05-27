@@ -6,9 +6,9 @@ from django.forms import model_to_dict
 
 from core.Access.decorators import manager_required
 from core.Offer.models import Offer
-from core.Deal.models import Deal, DealFile, DealGalleryFile
+from core.Deal.models import Deal, DealFile
 from .forms import CreatedOfferAddForm, CreatedOfferEditForm, PickUpOfferEditForm
-from Manager.Deals.forms import DealFileAddForm, DealFileEditForm, DealGalleryFileAddForm, DealGalleryFileEditForm
+from Manager.Deals.forms import DealFileAddForm
 
 
 @manager_required

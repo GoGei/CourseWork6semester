@@ -37,10 +37,6 @@
                     <div class="col-sm-5">{% trans 'Files' %}</div>
                     <div class="col-sm-7">{{ deal.dealfile_set.all|default:"-"|join:', ' }}</div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-sm-5">{% trans 'Gallery' %}</div>
-                    <div class="col-sm-7">{{ deal.dealgalleryfile_set.all|default:"-"|join:', ' }}</div>
-                </div>
             </div>
         </div>
     </div>

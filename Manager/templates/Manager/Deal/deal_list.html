@@ -21,7 +21,6 @@
                 <th>{% trans 'Client' %}</th>
                 <th>{% trans 'Offer' %}</th>
                 <th>{% trans 'Files' %}</th>
-                <th>{% trans 'Gallery' %}</th>
                 <th>{% trans 'Actions' %}</th>
             </tr>
             </thead>
@@ -32,7 +31,6 @@
                     <td>{{ item.client }}</td>
                     <td>{{ item.offer }}</td>
                     <td>{{ item.dealfile_set.all|join:', ' }}</td>
-                    <td>{{ item.dealgalleryfile_set.all|join:', ' }}</td>
                     <td>
                         {% if not item.archived %}
                         {% trans 'Not archived' %}

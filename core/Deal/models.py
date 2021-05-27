@@ -35,18 +35,3 @@ class DealFile(CrmMixin, TranslateMixin):
     @property
     def filename(self):
         return os.path.basename(self.file.name)
-
-
-class DealGalleryFile(CrmMixin, TranslateMixin):
-    deal = models.ForeignKey('Deal.Deal', on_delete=models.PROTECT)
-    image = models.ImageField()
-
-    class Meta:
-        db_table = 'deal_gallery_file'
-
-    def __str__(self):
-        return 'Deal gallery file: ' + str(self.pk)
-
-    @property
-    def filename(self):
-        return os.path.basename(self.file.name)
