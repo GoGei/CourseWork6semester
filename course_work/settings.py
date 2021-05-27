@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'django_hosts',
     'django_filters',
     'sdh.forms',
-    'sdh.table',
     'crispy_forms',
     'debug_toolbar',
     'sorl.thumbnail',
@@ -75,6 +74,7 @@ MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -132,13 +132,6 @@ WSGI_APPLICATION = 'course_work.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -177,10 +170,8 @@ SESSION_COOKIE_AGE = 86400  # one day
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'
-
-LANGUAGE_CODE = 'en'
-LANGUAGE_FALLBACK_CODE = 'ru'
+LANGUAGE_CODE = 'en-us'
+LANGUAGE_FALLBACK_CODE = 'en'
 DEFAULT_LANGUAGE = 'en'
 
 LANGUAGES = (
@@ -208,7 +199,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "htdocs"),
     os.path.join(BASE_DIR, 'media'),
-    # os.path.join(BASE_DIR, 'static'),
 )
 
 ROW_PER_PAGE = 20
@@ -224,3 +214,6 @@ INTERNAL_IPS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)

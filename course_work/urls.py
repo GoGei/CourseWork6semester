@@ -18,9 +18,12 @@ from django.urls import path
 from django.conf.urls import include, url
 from django.conf.urls.static import static, serve
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.views.i18n import set_language
 
 
 urlpatterns = [
+    url(r'^i18n/setlang/', csrf_exempt(set_language), name='set-language'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     url(r'^manager/', include('Manager.urls')),
