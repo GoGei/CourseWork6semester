@@ -52,6 +52,17 @@
             </div>
         </div>
     </nav>
+
+<div class="modal fade" id="bannersModal" tabindex="-1" role="dialog" aria-labelledby="unregistered-modal"
+       aria-hidden="true">
+    <div class="modal-dialog checkout-dialog" role="document">
+      <div class="modal-content unregistered-modal">
+        <p class="unregistered-modal__text">{% trans 'To view login or pass registration' %}</p>
+        <a href="{% url 'account' %}" class="btn-black mb-4">{% trans 'Sign in' %}</a>
+        <a href="{% url 'registration' %}" class="btn-white-shadow">{% trans 'Sign up' %}</a>
+      </div>
+    </div>
+  </div>
 </header>
 <main role="main" class="container">
     <div class="row">

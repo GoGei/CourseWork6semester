@@ -65,7 +65,13 @@
                 <tbody>
                 {% for item in file_sq %}
                     <tr>
+                        {% if item.file %}
                         <td>{{ item.file|default:'-' }}</td>
+                        {% elif item.image %}
+                        <td>{{ item.image|default:'-' }}</td>
+                        {% else %}
+                        <td>{% trans 'Load file error' %}</td>
+                        {% endif %}
                         <td>{{ item.file_type|default:'-' }}</td>
                         <td>{% include 'Manager/Offer/PickUp/Files/offer_files_table_action_field.html' with item=item %}</td>
                     </tr>

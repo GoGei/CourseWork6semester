@@ -4,11 +4,20 @@
 {% block content %}
     <h1>{% trans 'Offers page' %}</h1>
     {% for offer in offers %}
-        <a href="#">
+        {% if user.is_authenticated %}
+        <a href="{% url 'offer-view' offer.id %}">
             <div class="media">
-                <img class="rounded-circle account-img" src="{{ offer.get_cover.url }}"/>
+                <img class="rounded-circle account-img" src="{{ offer.get_cover.url }}" alt="{% static 'img/default-img.jpeg' %}"/>
             </div>
             <div class="small">{{ offer.address }}</div>
         </a>
+        {% else %}
+        <a href="#" data-toggle="modal" data-target="#bannersModal">
+            <div class="media">
+                <img class="rounded-circle account-img" src="{{ offer.get_cover.url }}" alt="{% static 'img/default-img.jpeg' %}"/>
+            </div>
+            <div class="small">{{ offer.address }}</div>
+        </a>
+        {% endif %}
     {% endfor %}
 {% endblock %}

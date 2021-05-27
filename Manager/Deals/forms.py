@@ -6,7 +6,8 @@ from core.Deal.models import DealFile, Deal
 
 
 class DealFileForm(forms.RequestForm):
-    file = forms.FileField(label=_('File'), required=True)
+    file = forms.FileField(label=_('File'), required=False)
+    image = forms.ImageField(label=_('Image'), required=False)
     file_type = forms.ChoiceField(label=_('File type'))
 
     def __init__(self, *args, **kwargs):

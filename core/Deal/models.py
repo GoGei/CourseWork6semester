@@ -36,7 +36,8 @@ class DealFile(CrmMixin, TranslateMixin):
     )
 
     deal = models.ForeignKey('Deal.Deal', on_delete=models.PROTECT)
-    file = models.FileField()
+    file = models.FileField(null=True)
+    image = models.ImageField(null=True)
     file_type = models.CharField(max_length=16, choices=TYPES, null=True)
 
     class Meta:

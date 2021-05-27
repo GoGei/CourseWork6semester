@@ -41,7 +41,7 @@ class Offer(CrmMixin, TranslateMixin):
         files = DealFile.objects.active().filter(deal=deal)
         cover = files.filter(file_type=DealFile.COVER)
         if cover:
-            return cover.first().file
+            return cover.first().image
         return None
 
     @property
@@ -50,5 +50,5 @@ class Offer(CrmMixin, TranslateMixin):
         deal = Deal.objects.active().get(offer=self)
         files = DealFile.objects.active().filter(deal=deal)
         gallery = files.filter(file_type=DealFile.GALLERY)
-        gallery = [item.file for item in gallery]
+        gallery = [item.image for item in gallery]
         return gallery
