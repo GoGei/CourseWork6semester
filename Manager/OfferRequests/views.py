@@ -34,6 +34,9 @@ def offer_request_approve(request, offer_request_id):
     offer_request = get_object_or_404(OfferRequest, pk=offer_request_id)
     offer_request.state = OfferRequest.ACCEPTED
     offer_request.save()
+    
+    offer = offer_request.offer
+    offer.clients.add(offer_request.user)
     messages.success(request, _('Offer "%s" was successfully accepted') % offer_request.pk)
     _send_mail(offer_request)
     return redirect(reverse('offer-request-list'))
