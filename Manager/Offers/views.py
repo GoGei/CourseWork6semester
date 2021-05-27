@@ -1,5 +1,4 @@
 import csv
-import xlwt
 
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
@@ -233,7 +232,7 @@ def offer_export(request, state, export_to):
         writer = csv.writer(response)
         writer.writerow(['creator', 'manager', 'clients', 'address'])
 
-        offers = Offer.objects.filter(state=Offer.CLOSED).all()
+        offers = Offer.objects.active().filter(state=Offer.CLOSED).all()
         for offer in offers:
             o = [str(offer.creator), str(offer.manager), ', '.join([str(client) for client in offer.clients.all()]), str(offer.address)]
             writer.writerow(o)

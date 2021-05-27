@@ -1,0 +1,37 @@
+{% extends 'Public/base_template.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <main class="main-login">
+        <form action="" method="POST" autocomplete="off">
+            {% csrf_token %}
+            {% include 'block_non_field_errors.html' %}
+            <h1>{% trans 'Sign in into account' %}</h1>
+            {% with field=form.email %}
+                <div class="form-group {% if field.errors %} has-error{% endif %}">
+                    <input type="text" name="email" id="id_email" value="{{ form.email.value }}" class="form-control" placeholder="{% trans 'Email' %} *" required>
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="error-message text-right col-xs-12 text text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endwith %}
+            {% with field=form.password %}
+                <div class="form-group password-group {% if field.errors %} has-error{% endif %}">
+                    <input type="password" name="password" id="id_password" class="form-control" placeholder="{% trans 'Password' %} *">
+                    <span class="password-icon"></span>
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="error-message text-right col-xs-12 text text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endwith %}
+            <div class="form-group login-actions">
+                <a href="#">{% trans 'Sign up' %}</a>
+                <button type="submit" class="btn btn-brand btn-register w-100">{% trans 'Sign in' %}</button>
+            </div>
+        </form>
+    </main>
+{% endblock %}

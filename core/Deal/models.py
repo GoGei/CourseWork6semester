@@ -1,6 +1,8 @@
 import os
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from django.contrib.auth.models import User
 from core.Offer.models import Offer
 
@@ -23,8 +25,20 @@ class Deal(CrmMixin, TranslateMixin):
 
 
 class DealFile(CrmMixin, TranslateMixin):
+    COVER = 'cover'
+    GALLERY = 'gallery'
+    DOCUMENT = 'document'
+
+    TYPES = (
+        (COVER, _('Cover')),
+        (GALLERY, _('Gallery')),
+        (DOCUMENT, _('Document')),
+    )
+
     deal = models.ForeignKey('Deal.Deal', on_delete=models.PROTECT)
-    file = models.FileField()
+    file = models.FileField(null=True)
+    image = models.ImageField(null=True)
+    file_type = models.CharField(max_length=16, choices=TYPES, null=True)
 
     class Meta:
         db_table = 'deal_file'

@@ -1,0 +1,42 @@
+{% extends 'Public/base_template.html' %}
+{% load static i18n hosts %}
+
+{% block content %}
+    <h1>{% trans 'Account' %}</h1>
+    <p>{% trans 'Username' %} - {{ user.username|default:"-" }}</p><br>
+    <p>{% trans 'Email' %} - {{ user.email|default:"-" }}</p><br>
+
+    {% if not viewed_offers %}
+        {% trans 'No viewed offers' %}
+    {% else %}
+        <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table med-table-summary table-caption">
+                <thead>
+                <tr>
+                    <th>{% trans 'Offer' %}</th>
+                    <th>{% trans 'Remove' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in viewed_offers %}
+                    <tr>
+                        <td>
+                            <a type="button" href="{% url 'offer-view' item.offer.id %}?reverse=
+    {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+                                {{ item.offer|default:'-' }}
+                            </a></td>
+                        <td>
+                            <a type="button" href="{% url 'account-remove-from-viewed' item.id %}?reverse=
+    {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
+                                {% trans 'Remove' %}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    {% endif %}
+{% endblock %}

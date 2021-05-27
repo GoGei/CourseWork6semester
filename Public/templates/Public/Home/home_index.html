@@ -1,0 +1,8 @@
+{% extends 'Public/base_template.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <h1>{% trans 'Home page' %}</h1>
+    !{{ request.user }}!
+    <p>{% trans 'This is my course project' %}</p>
+{% endblock %}

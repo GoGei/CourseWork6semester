@@ -14,6 +14,11 @@ import os
 
 from django.utils.translation import ugettext_lazy as _
 
+try:
+    from conf.settings import *
+except ImportError:
+    pass
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -55,9 +60,14 @@ INSTALLED_APPS = [
     'django_filters',
     'sdh.forms',
     'sdh.table',
+    'crispy_forms',
     'debug_toolbar',
+    'sorl.thumbnail',
     'core.Offer',
     'core.Deal',
+    'core.RegistrationsRequest',
+    'core.OfferRequest',
+    'course_work'
 ]
 
 MIDDLEWARE = [
@@ -78,15 +88,14 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 ROOT_HOSTCONF = 'course_work.hosts'
-# DEFAULT_HOST = 'public'
-DEFAULT_HOST = 'manager'
+DEFAULT_HOST = 'public'
 ROOT_URLCONF = 'course_work.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'core/templates/'),
-                 # os.path.join(BASE_DIR, 'Public/templates/'),
+                 os.path.join(BASE_DIR, 'Public/templates/'),
                  os.path.join(BASE_DIR, 'Manager/templates/'),
                  ],
         'OPTIONS': {
@@ -128,6 +137,17 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'coursework6semester',
+#         'USER': 'postgres',
+#         'PASSWORD': 'deretiuk',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -180,10 +200,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "htdocs"),
+    os.path.join(BASE_DIR, 'media'),
+    # os.path.join(BASE_DIR, 'static'),
 )
 
 ROW_PER_PAGE = 20
@@ -196,3 +220,5 @@ INTERNAL_IPS = [
 
 # if TOOLBAR_ENABLED:
 #     MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
