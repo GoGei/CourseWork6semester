@@ -1,15 +1,15 @@
 {% extends 'Public/base_template.html' %}
-{% load static i18n %}
+{% load static i18n staticfiles %}
 
 {% block content %}
     <h1>{% trans 'Offer' %}</h1>
     {% with offer.get_gallery as gallery %}
-        !{{ gallery }}!
         <div class="carousel-inner" role="listbox">
             {% for item in gallery %}
-                !item - {{ item.url }}!
+                !{{ item.url }}!
                 <div class="carousel-item text-center text-light mb-5 {% if forloop.first %} active{% endif %}">
-                    <img src="{{ item.url }}" class="img-fluid rounded-circle mb-3" width="150" alt="{% static 'img/default-img.jpeg' %}">
+{#                    <img src="{% static 'img/default-img.jpeg' %}" class="img-fluid rounded-circle" width="500" alt="Alternative">#}
+                    <img src="{{ item.url }}" class="img-fluid rounded-circle" width="500" alt="Alternative">
                 </div>
             {% endfor %}
         </div>

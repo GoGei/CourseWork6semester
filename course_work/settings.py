@@ -43,6 +43,7 @@ SECRET_KEY = 'pvy25jqffb5+85%0kr2absrjza2ti#&nzj!7_!ud1#@0sa_aki'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TOOLBAR_ENABLED = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -58,11 +59,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_hosts',
     'django_filters',
+    'django_extensions',
+    'debug_toolbar',
     'sdh.forms',
     'crispy_forms',
-    'debug_toolbar',
     'sorl.thumbnail',
-    'django_extensions',
     'ckeditor',
     'ckeditor_uploader',
     'core.Offer',
@@ -73,18 +74,19 @@ INSTALLED_APPS = [
     'course_work'
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = (
     'django_hosts.middleware.HostsRequestMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware'
-]
+
+)
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
@@ -104,13 +106,16 @@ TEMPLATES = [
                  ],
         'OPTIONS': {
             'debug': False,
-            'context_processors': (
+            'context_processors': [
+                "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.template.context_processors.debug",
-                "django.template.context_processors.request",
                 "django.template.context_processors.i18n",
-                'django.contrib.messages.context_processors.messages',
-            ),
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
+                "django.contrib.messages.context_processors.messages",
+            ],
             'loaders': [
                 ('django.template.loaders.cached.Loader', [
                     'django.template.loaders.filesystem.Loader',
@@ -272,27 +277,36 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "htdocs"),
-    os.path.join(BASE_DIR, 'media'),
+    os.path.join(BASE_DIR, "media"),
 )
 
 ROW_PER_PAGE = 20
 
-TOOLBAR_ENABLED = True
-
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+INTERNAL_IPS = ('127.0.0.1','::1', '0.0.0.0')
 
 # if TOOLBAR_ENABLED:
 #     MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda x: True
+}
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
