@@ -1,0 +1,17 @@
+<div id="item-{{ form.language_code.value|default_if_none:'' }}"
+    class="tab-pane {% if forloop.first %}active{% endif %}">
+    {{ form.language_code }}
+    {{ form.delete }}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                {% include "base_form_field.html" with field=form.header %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {% include "base_form_field.html" with field=form.text %}
+            </div>
+        </div>
+    </div>
+</div>

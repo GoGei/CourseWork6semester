@@ -1,0 +1,7 @@
+{% if field.errors %}
+    {% for item in field.errors %}
+        {% if item %}
+            <div class="help-block col-xs-12 text text-danger">{{ item }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}

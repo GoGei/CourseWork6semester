@@ -63,10 +63,13 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'sorl.thumbnail',
     'django_extensions',
+    'ckeditor',
+    'ckeditor_uploader',
     'core.Offer',
     'core.Deal',
     'core.RegistrationsRequest',
     'core.OfferRequest',
+    'core.Utils',
     'course_work'
 ]
 
@@ -166,6 +169,85 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_COOKIE_AGE = 86400  # one day
+
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        "removePlugins": "stylesheetparser",
+        'toolbar': [
+            ['Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline',
+             '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             '-', 'Outdent', 'Indent',
+             '-', 'Link', 'Unlink',
+             'Format',
+             '-',
+             'Image',
+             ],
+            ['HorizontalRule',
+             '-', 'BulletedList', 'NumberedList',
+             '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+             '-', 'SpecialChar',
+             '-', 'Source',
+             ],
+            ['Maximize']
+        ],
+        'toolbarCanCollapse': True,
+        'width': '100%',
+        "allowedContent": True,
+
+    },
+    'short': {
+        'toolbar': [
+            ['Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline',
+             '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             '-', 'Outdent', 'Indent',
+             '-', 'Link', 'Unlink',
+             'Format',
+             '-',
+             'Image',
+             ],
+            ['HorizontalRule',
+             '-', 'BulletedList', 'NumberedList',
+             '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+             '-', 'SpecialChar',
+             '-', 'Source',
+             ],
+            ['Maximize']
+        ],
+        'toolbarCanCollapse': True,
+        'width': '100%',
+        "removePlugins": "stylesheetparser",
+        "allowedContent": True
+
+    },
+    'user': {
+        'toolbar': [
+            ['Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline',
+             '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             '-', 'Outdent', 'Indent',
+             '-', 'Link', 'Unlink',
+             'Format',
+             '-',
+             'Image',
+             ],
+            ['HorizontalRule',
+             '-', 'BulletedList', 'NumberedList',
+             '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+             '-', 'SpecialChar',
+             '-', 'Source',
+             ],
+            ['Maximize']
+        ],
+        'toolbarCanCollapse': True,
+        'width': '100%',
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

@@ -1,0 +1,31 @@
+{% load sdhforms %}
+{% load filters %}
+
+<div class="form-group {% if field.errors %} has-error{% endif %} {% if field.is_hidden %}d-none{% endif %} ">
+    {% if field.field.required %}
+        <label for="{{ field.id_for_label }}">{% include 'icon_required.html' %}</label>
+    {% else %}
+        <label for="{{ field.id_for_label }}"><strong>{{ field.label }}</strong></label>
+    {% endif %}
+
+    {% if field.field.widget|get_class == 'CheckboxInput' %}
+        <div class="checkbox c-checkbox needsclick">
+            <label class="needsclick">
+                {% sdh_render_field field %}
+                <span class="fa fa-check"></span>
+            </label>
+        </div>
+    {% else %}
+        {% if field.field.widget|get_class == 'MaskedDateInput' or field.field.widget|get_class == 'MaskedDateTimeInput' %}
+            <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i>
+            </span>
+                {% sdh_render_field field class='form-control' %}
+            </div>
+        {% else %}
+            {% sdh_render_field field class='form-control' %}
+        {% endif %}
+
+    {% endif %}
+    {% include 'block_errors.html' %}
+</div>

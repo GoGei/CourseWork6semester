@@ -10,7 +10,7 @@ from core.Access.decorators import manager_required
 
 from core.Offer.models import Offer
 from core.Deal.models import Deal, DealFile
-from .forms import CreatedOfferAddForm, CreatedOfferEditForm, PickUpOfferEditForm
+from .forms import CreatedOfferAddForm, CreatedOfferEditForm, PickUpOfferEditForm, OfferLangFormSet
 from Manager.Deals.forms import DealFileAddForm
 
 
@@ -41,13 +41,18 @@ def offer_add(request, state):
     }
 
     form_body = state_template_name_map[state]['form'](request.POST or None)
+    lang_form_set = OfferLangFormSet(request.POST or None,
+                                    request.FILES or None,
+                                    prefix='offer',
+                                    can_delete=False)
 
     if '_cancel' in request.POST:
         return redirect(reverse('offer-list', args=[state]))
 
-    if form_body.is_valid():
+    if form_body.is_valid() and lang_form_set.is_valid():
         offer = form_body.save()
         offer.creator = request.user
+        lang_form_set.save(offer)
         offer.save()
         messages.success(request, _('Offer "%s" was successfully added') % offer.pk)
         return redirect(reverse('offer-list', args=[state]))
@@ -60,7 +65,8 @@ def offer_add(request, state):
 
     return render(request,
                   template,
-                  {'form': form})
+                  {'form': form,
+                   'lang_form_set': lang_form_set})
 
 
 @manager_required
@@ -84,9 +90,14 @@ def offer_edit(request, state, offer_id):
     initial = model_to_dict(offer)
     initial['clients'] = [item.id for item in offer.clients.all()]
     form_body = state_template_name_map[state]['form'](request.POST or None, instance=offer, initial=initial)
+    lang_form_set = OfferLangFormSet(request.POST or None,
+                                     request.FILES or None,
+                                     prefix='offer',
+                                     instance=offer, can_delete=False)
 
-    if form_body.is_valid():
+    if form_body.is_valid() and lang_form_set.is_valid():
         offer = form_body.save()
+        lang_form_set.save(offer)
         messages.success(request, _('Offer "%s" was successfully edited') % offer.pk)
         return redirect(reverse('offer-list', args=[state]))
 
@@ -98,6 +109,7 @@ def offer_edit(request, state, offer_id):
     return render(request,
                   template,
                   {'form': form,
+                   'lang_form_set': lang_form_set,
                    'obj_id': offer.id})
 
 
@@ -108,7 +120,6 @@ def offer_details(request, state, offer_id):
         'created': 'Manager/Offer/Created/offer_details.html',
         'pick_up': 'Manager/Offer/PickUp/offer_details.html',
         'closed': 'Manager/Offer/Closed/offer_details.html',
-        # 'deny': 'Manager/Offer/Deny/offer_details.html',
     }
     template = state_template_name_map[state]
     if state != 'created':

@@ -1,10 +1,12 @@
 from core.Utils.base_classes import CrmMixin, TranslateMixin
-from django.contrib.auth.models import User
+from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
 
 
 class Offer(CrmMixin, TranslateMixin):
+    TRANSLATED_FIELDS = ['header', 'text']
     CREATED = 'created'
     PICK_UP = 'pick_up'
     CLOSED = 'closed'
@@ -22,6 +24,8 @@ class Offer(CrmMixin, TranslateMixin):
     clients = models.ManyToManyField(User, related_name='+')
 
     address = models.CharField(max_length=128)
+    header_data = JSONField(default=dict)  # {lang_code: data}
+    text_data = JSONField(default=dict)  # {lang_code: data}
     state = models.CharField(max_length=16, choices=STATES)
 
     class Meta:

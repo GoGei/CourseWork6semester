@@ -72,7 +72,6 @@
                         </li>
                         <li id="selectHolder" class="nav-item">
                             <form id="select-language" action="{% url 'set_language' %}" method="POST">
-{#                            <form id="select-language" action="#" method="POST">#}
                                 {% csrf_token %}
                                 <select name="language" class="selectpicker language-select">
                                     {% get_current_language as LANGUAGE_CODE %}
@@ -150,6 +149,7 @@
 
     <!-- Custom and plugin javascript -->
     <script src="{% static 'js/langswitcher.js' %}"></script>
+    <script src="{% static 'js/select2-multiple.js' %}"></script>
     <script src="{% static 'js/get-offer-request-counter.js' %}"></script>
 
     <script>

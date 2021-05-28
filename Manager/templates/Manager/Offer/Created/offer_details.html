@@ -29,6 +29,14 @@
                     <div class="col-sm-5">{% trans 'Address' %}</div>
                     <div class="col-sm-7">{{ offer.address|default:"-" }}</div>
                 </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Header' %}</div>
+                    <div class="col-sm-7">{{ offer.header|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Text' %}</div>
+                    <div class="col-sm-7">{{ offer.text|default:"-" }}</div>
+                </div>
             </div>
         </div>
     </div>
