@@ -74,8 +74,6 @@ def manager_details(request, manager_id):
 @manager_required
 def manager_archive(request, manager_id):
     manager = get_object_or_404(User, pk=manager_id)
-    # manager.archive(request.user)
-    # manager.save()
-    manager.delete()
-
+    manager.is_active = False
+    messages.success(request, _('User "%s" profile was successfully archived') % manager.email)
     return redirect(reverse('manager-list'))

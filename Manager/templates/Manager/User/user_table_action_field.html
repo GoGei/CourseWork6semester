@@ -1,5 +1,7 @@
 {% load i18n %}
-<a class="btn btn-success" type="button" href="{% url 'user-details' item.id %}"
-   title="{% trans 'Details' %}" {% if not request.acl.is_user_view %}style="display: none;"{% endif %}>
-    <i class="fa fa-eye"></i>
+<a type="button" href="{% url 'user-details' item.id %}">
+    {% trans 'Details' %}
+</a>
+<a type="button" href="{% url 'user-archive' item.id %}">
+    {% trans 'Archive' %}
 </a>

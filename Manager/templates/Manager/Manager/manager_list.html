@@ -11,15 +11,17 @@
 
 
 {% block content %}
+    {% if not qs %}
+        {% trans 'No managers' %}
+    {% else %}
     <div class="table-responsive">
     <table class="table med-table-summary table-caption" id="id_table">
         <thead>
             <tr>
                 <th onclick="sortTableBy(document.getElementById('id_table'), 0)">{% trans 'First name' %}</th>
                 <th onclick="sortTableBy(document.getElementById('id_table'), 1)">{% trans 'Last name' %}</th>
-                <th onclick="sortTableBy(document.getElementById('id_table'), 2)">{% trans 'Middle name' %}</th>
-                <th onclick="sortTableBy(document.getElementById('id_table'), 3)">{% trans 'Email' %}</th>
-                <th onclick="sortTableBy(document.getElementById('id_table'), 4)">{% trans 'Actions' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 2)">{% trans 'Email' %}</th>
+                <th>{% trans 'Actions' %}</th>
             </tr>
             </thead>
             <tbody>
@@ -27,7 +29,6 @@
                 <tr>
                     <td>{{ item.first_name }}</td>
                     <td>{{ item.last_name }}</td>
-                    <td>{{ item.middle_name }}</td>
                     <td>{{ item.email }}</td>
                     <td>{% include 'Manager/Manager/manager_table_action_field.html' with item=item %}</td>
                 </tr>
@@ -35,4 +36,5 @@
             </tbody>
     </table>
     </div>
+    {% endif %}
 {% endblock %}
