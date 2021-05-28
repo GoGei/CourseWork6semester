@@ -10112,3 +10112,10 @@ label.needsclick span {
 .offer-requests-counter .summary span {
   margin-left: 1px;
 }
+
+table, th, td {
+    border: 1px solid black;
+}
+th {
+    cursor: pointer;
+}
