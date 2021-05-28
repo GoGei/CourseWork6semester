@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-27 21:19+0000\n"
+"POT-Creation-Date: 2021-05-28 10:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,339 +20,351 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#, python-format
+msgid "User \"%s\" was successfully archived"
+msgstr "Пользователь \"%s\" успешно заархивирован"
+
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 msgid "Image"
-msgstr ""
+msgstr "Картинка"
 
 msgid "File type"
-msgstr ""
+msgstr "Тип файла"
 
 msgid "Login"
-msgstr ""
+msgstr "Логин"
 
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 msgid "Unknown login."
-msgstr ""
+msgstr "Неизвестный логин."
 
 msgid "Please enter a correct email and password."
-msgstr ""
+msgstr "Пожалуйста введите корректный email и пароль."
 
 msgid "This account is not staff."
-msgstr ""
+msgstr "Это не аккаун администратора."
 
 msgid "This account is inactive."
-msgstr ""
+msgstr "Этот аккаунт не активен."
 
 msgid ""
 "Enter minimum eight characters, using numbers, letters, symbols (1-0, A-Z, a-"
 "z, !@-)."
-msgstr ""
+msgstr "Введите минимум восемь символов, используя цифры, буквы, символы (1-0, A-Z, "
+"a-z, !@-)."
 
 msgid "First name"
-msgstr ""
+msgstr "Имя"
 
 msgid "Last name"
-msgstr ""
+msgstr "Фамилия"
 
 msgid "Email"
-msgstr ""
+msgstr "Электронная почта"
 
 msgid "Repeat password"
-msgstr ""
+msgstr "Повторите пароль"
 
 msgid "User with this email already exists"
-msgstr ""
+msgstr "Пользователь с этой электронной почтой уже существует"
 
 msgid "Password mismatch!"
-msgstr ""
+msgstr "Пароли не совпадают"
 
 #, python-format
 msgid "Manager \"%s\" profile was successfully added"
-msgstr ""
+msgstr "Профиль менеджер \"%s\" был добавлен"
 
 msgid "Add manager"
-msgstr ""
+msgstr "Добавить менеджера"
 
 #, python-format
 msgid "Manager \"%s\" profile was successfully edited"
-msgstr ""
+msgstr "Профиль менеджер \"%s\" был отредактирован"
 
 msgid "Edit manager"
-msgstr ""
+msgstr "Редактировать менеджера"
+
+#, python-format
+msgid "User \"%s\" profile was successfully archived"
+msgstr "Профиль пользователя \"%s\" был заархивирован"
 
 #, python-format
 msgid "Offer \"%s\" was successfully accepted"
-msgstr ""
+msgstr "Предложение \"%s\" было принято"
 
 #, python-format
 msgid "Offer \"%s\" was successfully declined and archived"
-msgstr ""
+msgstr "Предложение \"%s\" было отклонено и заархивировано"
 
 #, python-format
 msgid "Offer \"%s\" was successfully restored"
-msgstr ""
+msgstr "Предложение \"%s\" было восстановлено"
 
 msgid "Address"
-msgstr ""
+msgstr "Адрес"
 
 msgid "Creator"
-msgstr ""
+msgstr "Создатель"
 
 msgid "Select from the list"
-msgstr ""
+msgstr "Выбрать из списка"
 
 msgid "Manager"
-msgstr ""
+msgstr "Менеджер"
 
 msgid "Clients"
-msgstr ""
+msgstr "Клиент"
 
 #, python-format
 msgid "Offer \"%s\" was successfully added"
-msgstr ""
+msgstr "Предложение \"%s\" было добавлено"
 
 msgid "Add offer"
-msgstr ""
+msgstr "Добавить предложение"
 
 #, python-format
 msgid "Offer \"%s\" was successfully edited"
-msgstr ""
+msgstr "Предложение \"%s\" было отредактировано"
 
 msgid "Edit offer"
-msgstr ""
+msgstr "Редактировать предложение"
 
 #, python-format
 msgid "Offer \"%s\" was successfully archived"
-msgstr ""
+msgstr "Предложение \"%s\" было заархивировано"
 
 #, python-format
 msgid "Offer %s archived!"
-msgstr ""
+msgstr "Предложение %s заархивировано!"
 
 #, python-format
 msgid "Offer \"%s\" was successfully pick up"
-msgstr ""
+msgstr "Предложение \"%s\" было взято"
 
 #, python-format
 msgid "Offer \"%s\" was successfully deny"
-msgstr ""
+msgstr "Предложение \"%s\" было отклонено"
 
 #, python-format
 msgid "Offer \"%s\" was successfully closed"
-msgstr ""
+msgstr "Предложение \"%s\" было закрыто"
 
 #, python-format
 msgid "Deal file \"%s\" was successfully added"
-msgstr ""
+msgstr "Файл дела \"%s\" был добавлен"
 
 #, python-format
 msgid "File \"%s\" was successfully deleted"
-msgstr ""
+msgstr "Файл \"%s\" был удалён"
 
 msgid "Error when export occurred"
-msgstr ""
+msgstr "Произошла ошибка при экспорте"
 
 msgid "Add"
-msgstr ""
+msgstr "Добавить"
 
 msgid "Managers"
-msgstr ""
+msgstr "Менеджеры"
 
 msgid "Edit"
-msgstr ""
+msgstr "Редактировать"
 
-msgid "Middle name"
-msgstr ""
+msgid "No managers"
+msgstr "Нет менедеров"
 
 msgid "Actions"
-msgstr ""
+msgstr "Действия"
 
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 msgid "Details"
-msgstr ""
+msgstr "Детали"
 
 msgid "Dear"
-msgstr ""
+msgstr "Уважаемый"
 
 msgid "Your offer "
-msgstr ""
+msgstr "Ваш запрос "
 
 msgid "request was"
-msgstr ""
+msgstr "на предложение "
 
 msgid "by manager"
-msgstr ""
+msgstr "менеджером"
 
 msgid "Closed offers"
-msgstr ""
+msgstr "Закрыть предложение"
 
 msgid "Export to cvs"
-msgstr ""
+msgstr "Экспортировать в csv"
 
 msgid "No closed offers"
-msgstr ""
+msgstr "Не закрытые предложения"
 
 msgid "Client"
-msgstr ""
+msgstr "Клиент"
 
 msgid "Created offers"
-msgstr ""
+msgstr "Созданные предложения"
 
 msgid "No created offers"
-msgstr ""
+msgstr "Нет созданных предложений"
 
 msgid "Archived"
-msgstr ""
+msgstr "Заархивирован"
 
 msgid "Not archived"
-msgstr ""
+msgstr "Не заархивирован"
 
 msgid "Archive"
-msgstr ""
+msgstr "Заархивировать"
 
 msgid "Restory"
-msgstr ""
+msgstr "Восстановить"
 
 msgid "Pick up"
-msgstr ""
+msgstr "Принять"
 
 msgid "Deny"
-msgstr ""
+msgstr "Отклонить"
 
 msgid "Denied offers"
-msgstr ""
+msgstr "Отклонённые предложения"
 
 msgid "No deny offers"
-msgstr ""
+msgstr "Нет отклонённых предложений"
 
 msgid "Picked up offers"
-msgstr ""
+msgstr "Принятые предложения"
 
 msgid "Add file"
-msgstr ""
+msgstr "Добавить файл"
 
 msgid "State"
-msgstr ""
+msgstr "Статус"
 
 msgid "No file offers"
-msgstr ""
+msgstr "Нет файлов предложения"
 
 msgid "Load file error"
-msgstr ""
+msgstr "Ошибка загрузки файла"
 
 msgid "No pick up offers"
-msgstr ""
+msgstr "Нет принятых предложений"
 
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 msgid "Offer requests"
-msgstr ""
+msgstr "Запрос на предложение"
 
 msgid "Offer"
-msgstr ""
+msgstr "Предложение"
 
 msgid "User"
-msgstr ""
+msgstr "Пользователь"
 
 msgid "Restore"
-msgstr ""
+msgstr "Восстановить"
 
 msgid "Approve"
-msgstr ""
+msgstr "Принять"
 
 msgid "Decline"
-msgstr ""
+msgstr "Отклонить"
 
 msgid "No offer requests"
-msgstr ""
+msgstr "Нет запросов на предложение"
 
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 msgid "Username"
-msgstr ""
+msgstr "Никнейм"
 
 msgid "Active status"
-msgstr ""
+msgstr "Активный статус"
 
 msgid "Active"
-msgstr ""
+msgstr "Активный"
 
 msgid "Not active"
-msgstr ""
+msgstr "Не активный"
+
+msgid "No users"
+msgstr "Нет пользователей"
 
 msgid "Home"
-msgstr ""
+msgstr "Домашняя"
 
 msgid "Offers created"
-msgstr ""
+msgstr "Предложения созданные"
 
 msgid "Pick up offers"
-msgstr ""
+msgstr "Принятые предложения"
 
 msgid "Deny offers"
-msgstr ""
+msgstr "Отклонённые предложения"
 
 msgid "Offer request"
-msgstr ""
+msgstr "Запрос на предложение"
 
 msgid "Manager Panel"
-msgstr ""
+msgstr "Панель менеджера"
 
 msgid "Log out"
-msgstr ""
+msgstr "Выйти"
 
 msgid "Main page"
-msgstr ""
+msgstr "Главная страница"
 
 msgid "Nocontent page"
 msgstr ""
 
 msgid "Offer is already approved"
-msgstr ""
+msgstr "Предложение уже принято"
 
 msgid "Offer is already added"
-msgstr ""
+msgstr "Предложение уже одобрено"
 
 msgid "Offer was added"
-msgstr ""
+msgstr "Предложение было добавлено"
 
 msgid "Offer was removed"
-msgstr ""
+msgstr "Предложение было убрано"
 
 msgid "Enter last name"
-msgstr ""
+msgstr "Введите фамилию"
 
 msgid "Enter first name"
-msgstr ""
+msgstr "Введите имя"
 
 msgid "Phone"
-msgstr ""
+msgstr "Телефон"
 
 msgid "Enter phone"
-msgstr ""
+msgstr "Введите телефон"
 
 msgid "Enter email"
-msgstr ""
+msgstr "Введите email"
 
 msgid "Account"
-msgstr ""
+msgstr "Аккаунт"
 
 msgid "No viewed offers"
-msgstr ""
+msgstr "Нет просматриваемых предложений"
 
 msgid "Remove"
-msgstr ""
+msgstr "Убрать"
 
 msgid "Contacts page"
-msgstr ""
+msgstr "Страница контактов"
 
 msgid "email"
 msgstr ""
@@ -361,76 +373,76 @@ msgid "Home page"
 msgstr "Домашняя страница"
 
 msgid "This is my course project"
-msgstr ""
+msgstr "Это мой курсовой проект"
 
 msgid "Sign in into account"
-msgstr ""
+msgstr "Войти в аккаунт"
 
 msgid "Sign up"
-msgstr ""
+msgstr "Зарегистрироваться"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Войти"
 
 msgid "Offers page"
-msgstr ""
+msgstr "Страница предложений"
 
 msgid "Add to viewed"
-msgstr ""
+msgstr "Добавить в просматриваемые"
 
 msgid "Sign Up"
-msgstr ""
+msgstr "Зарегистрироваться"
 
 msgid "Offers"
-msgstr ""
+msgstr "Предложения"
 
 msgid "Contacts"
-msgstr ""
+msgstr "Контакты"
 
 msgid "Logout"
-msgstr ""
+msgstr "Выйти"
 
 msgid "Register"
-msgstr ""
+msgstr "Регистрация"
 
 msgid "To view login or pass registration"
-msgstr ""
+msgstr "Для просмотра войдите или пройдите регистрацию"
 
 msgid "Cover"
-msgstr ""
+msgstr "Обложка"
 
 msgid "Gallery"
-msgstr ""
+msgstr "Галерея"
 
 msgid "Document"
-msgstr ""
+msgstr "Документ"
 
 msgid "Created"
-msgstr ""
+msgstr "Создано"
 
 msgid "Closed"
-msgstr ""
+msgstr "Закрыто"
 
 msgid "Viewed by user"
-msgstr ""
+msgstr "Просмотрено пользователем"
 
 msgid "Viewed by manager"
-msgstr ""
+msgstr "Просмотрено менеджером"
 
 msgid "Declined"
-msgstr ""
+msgstr "Отклонено"
 
 msgid "Accepted"
-msgstr ""
+msgstr "Принято"
 
 msgid "Phone has incorrect format. Please use +380 (99) 999-9999"
-msgstr ""
+msgstr "Телефон имеет некоректный формат. Используйте +380 (99) 999-9999"
 
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 msgid "Apply"
-msgstr ""
+msgstr "Применить"
 
 msgid "Upload video"
 msgstr ""
@@ -511,10 +523,10 @@ msgid "Update"
 msgstr ""
 
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 msgid "usage: "
 msgstr ""
