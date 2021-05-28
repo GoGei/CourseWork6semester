@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-27 21:19+0000\n"
+"POT-Creation-Date: 2021-05-28 10:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, python-format
+msgid "User \"%s\" was successfully archived"
+msgstr ""
 
 msgid "File"
 msgstr ""
@@ -80,6 +84,10 @@ msgid "Manager \"%s\" profile was successfully edited"
 msgstr ""
 
 msgid "Edit manager"
+msgstr ""
+
+#, python-format
+msgid "User \"%s\" profile was successfully archived"
 msgstr ""
 
 #, python-format
@@ -163,7 +171,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-msgid "Middle name"
+msgid "No managers"
 msgstr ""
 
 msgid "Actions"
@@ -284,6 +292,9 @@ msgid "Active"
 msgstr ""
 
 msgid "Not active"
+msgstr ""
+
+msgid "No users"
 msgstr ""
 
 msgid "Home"
