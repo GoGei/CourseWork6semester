@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<form action="" novalidate="novalidate" method="POST" enctype="multipart/form-data" class="form">
+    <div class="panel panel-default">
+        <div class="panel-body panel-pb">
+            {% if lang_form_set %}
+                {% include 'lang_widget.html' with lang_form='Manager/Offer/offer_lang_form.html' form_set=lang_form_set %}
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    {% include "base_form_field.html" with field=form.body.address %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        {% with form.buttons as buttons %}
+            {% include "submit_line.html" %}
+        {% endwith %}
+    </div>
+</form>

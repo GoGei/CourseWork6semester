@@ -17,6 +17,7 @@
                 <img class="rounded-circle account-img" src="{{ offer.get_cover.url }}" alt="{% static 'img/default-img.jpeg' %}"/>
             </div>
             <div class="small">{{ offer.address }}</div>
+            <div class="small">{{ offer.header|default:"-"|escape }}</div>
         </a>
         {% endif %}
     {% endfor %}

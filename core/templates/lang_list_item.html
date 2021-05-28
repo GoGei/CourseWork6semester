@@ -1,0 +1,16 @@
+{% load filters %}
+
+{% if form.language_code.value %}
+<li class="{% if form.delete.value %}hidden{% endif %} ">
+    <a data-toggle="tab" class="nav-link {% if forloop.first %}active{% endif %}" id="a-{{ form.language_code.value }}" href="#item-{{ form.language_code.value }}" aria-expanded="true">
+        <span class="lang-name">
+          {{ form.language_code.value|get_language_name }}
+          {% if form.language_code.value == DEFAULT_LANGUAGE %}*{% endif %}
+          {% if form.errors %} <span class="badge badge-danger">!</span>{% endif %}
+        </span>
+        {% if form_set.can_delete %}
+        <i class="pink ace-icon fa fa-remove bigger-110 remove-lang"></i>
+        {% endif %}
+    </a>
+</li>
+{% endif %}

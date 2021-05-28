@@ -1,0 +1,52 @@
+{% load i18n %}
+{% load sdhforms %}
+
+{% if form_set.can_delete %}
+<div class="row">
+    <div class="col-sm-6 col-xs-12 widget-main">
+        <label>{% trans 'Choose language' %}</label>
+        {% sdh_render_field form.body.language_code class='form-control' %}
+        {% if form.body.language_code.errors %}
+        <div class="alert alert-warning">
+            {% for error in form.body.language_code.errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-sm-6 col-xs-12 widget-main">
+
+    </div>
+</div>
+{% endif %}
+
+
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <div class="tabs-container" id="lang-widget" data-prefix="{{ form_set.prefix }}">
+            <div class="formset_errors">
+                {% if form_set.non_form_errors %}
+                {% for error in form_set.non_form_errors %}
+                <div class="alert alert-warning">
+                    {{ error }}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {{ form_set.management_form }}
+            <input type="hidden" name="{{ form_set.prefix }}-NEXT_INDEX" value="{{ form_set.total_form_count }}" id="id_{{ form_set.prefix }}-NEXT_INDEX" />
+            <ul class="nav nav-tabs" id="myTab3">
+                {% for form_item in form_set.forms %}
+                  {% include 'lang_list_item.html' with form=form_item forloog=forloop %}
+                {% endfor %}
+            </ul>
+
+            <div class="tab-content" id="lang-forms-list">
+                {% for form_item in form_set.forms %}
+                    {% include lang_form with form=form_item forloop=forloop%}
+                {% endfor %}
+                {% include lang_form with form=form_set.empty_form %}
+            </div>
+        </div>
+    </div>
+</div>
