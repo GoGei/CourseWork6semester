@@ -7,7 +7,6 @@
 
 {% block action-area %}
     <a href="{% url 'offer-export' 'closed' 'csv' %}" type="button" class="btn btn-w-m btn-primary">{% trans 'Export to cvs' %}</a>
-{#    <a href="{% url 'offer-export' 'closed' 'xls' %}" type="button" class="btn btn-w-m btn-primary">{% trans 'Export xls' %}</a>#}
 {% endblock %}
 
 
@@ -16,13 +15,13 @@
     {% if not qs %}
         {% trans 'No closed offers' %}
     {% else %}
-    <table class="table med-table-summary table-caption">
+    <table class="table med-table-summary table-caption" id="id_table">
         <thead>
             <tr>
-                <th>{% trans 'Creator' %}</th>
-                <th>{% trans 'Manager' %}</th>
-                <th>{% trans 'Client' %}</th>
-                <th>{% trans 'Address' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 0)">{% trans 'Creator' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 1)">{% trans 'Manager' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 2)">{% trans 'Client' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 3)">{% trans 'Address' %}</th>
             </tr>
             </thead>
             <tbody>

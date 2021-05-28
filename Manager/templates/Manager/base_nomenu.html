@@ -152,6 +152,45 @@
     <script src="{% static 'js/langswitcher.js' %}"></script>
     <script src="{% static 'js/get-offer-request-counter.js' %}"></script>
 
+    <script>
+        function sortTableBy(table, number) {
+            let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+
+            switching = true;
+            dir = "asc";
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[number];
+                    y = rows[i + 1].getElementsByTagName("TD")[number];
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+
     {% block extrajs %}
     {% endblock %}
 

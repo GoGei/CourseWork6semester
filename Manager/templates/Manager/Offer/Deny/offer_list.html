@@ -14,15 +14,15 @@
     {% if not qs %}
         {% trans 'No deny offers' %}
     {% else %}
-    <table class="table med-table-summary table-caption">
+    <table class="table med-table-summary table-caption" id="id_table">
         <thead>
             <tr>
-                <th>{% trans 'Creator' %}</th>
-                <th>{% trans 'Manager' %}</th>
-                <th>{% trans 'Client' %}</th>
-                <th>{% trans 'Address' %}</th>
-                <th>{% trans 'Archived' %}</th>
-                <th>{% trans 'Actions' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 0)">{% trans 'Creator' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 1)">{% trans 'Manager' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 2)">{% trans 'Client' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 3)">{% trans 'Address' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 4)">{% trans 'Archived' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 5)">{% trans 'Actions' %}</th>
             </tr>
             </thead>
             <tbody>

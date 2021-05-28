@@ -12,14 +12,14 @@
 
 {% block content %}
     <div class="table-responsive">
-    <table class="table med-table-summary table-caption">
+    <table class="table med-table-summary table-caption" id="id_table">
         <thead>
             <tr>
-                <th>{% trans 'First name' %}</th>
-                <th>{% trans 'Last name' %}</th>
-                <th>{% trans 'Middle name' %}</th>
-                <th>{% trans 'Email' %}</th>
-                <th>{% trans 'Actions' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 0)">{% trans 'First name' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 1)">{% trans 'Last name' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 2)">{% trans 'Middle name' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 3)">{% trans 'Email' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 4)">{% trans 'Actions' %}</th>
             </tr>
             </thead>
             <tbody>
