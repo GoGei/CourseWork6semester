@@ -1,3 +1,4 @@
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from core.Utils.fields import PhoneField
 from django import forms
@@ -10,7 +11,10 @@ class UserRegistrationForm(UserCreationForm):
                                 widget=forms.TextInput(attrs={'placeholder': _('Enter last name')}))
     first_name = forms.CharField(label=_('First name'), max_length=50, required=True,
                                  widget=forms.TextInput(attrs={'placeholder': _('Enter first name')}))
-    phone = PhoneField(label=_('Phone'), attrs={'placeholder': _('Enter phone')})
+    phone = PhoneField(label=_('Phone'), attrs={'placeholder': _('Enter phone'),
+                                                "data-inputmask": mark_safe("'mask': '+380 (99) 999-9999'"),
+                                                "data-masked": ""
+                                                })
     email = forms.EmailField(label=_('Email'), max_length=50, required=True,
                              widget=forms.TextInput(attrs={'placeholder': _('Enter email')}))
 

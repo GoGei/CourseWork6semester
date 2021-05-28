@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-28 10:09+0000\n"
+"POT-Creation-Date: 2021-05-28 10:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,8 @@ msgstr "Этот аккаунт не активен."
 msgid ""
 "Enter minimum eight characters, using numbers, letters, symbols (1-0, A-Z, a-"
 "z, !@-)."
-msgstr "Введите минимум восемь символов, используя цифры, буквы, символы (1-0, A-Z, "
+msgstr ""
+"Введите минимум восемь символов, используя цифры, буквы, символы (1-0, A-Z, "
 "a-z, !@-)."
 
 msgid "First name"
@@ -104,6 +105,9 @@ msgstr "Предложение \"%s\" было отклонено и заарх�
 #, python-format
 msgid "Offer \"%s\" was successfully restored"
 msgstr "Предложение \"%s\" было восстановлено"
+
+msgid "Offer request message"
+msgstr "Сообщение на запрос на предложение"
 
 msgid "Address"
 msgstr "Адрес"
@@ -354,6 +358,9 @@ msgstr "Введите телефон"
 msgid "Enter email"
 msgstr "Введите email"
 
+msgid "Registration"
+msgstr "Регистрация"
+
 msgid "Account"
 msgstr "Аккаунт"
 
@@ -386,6 +393,9 @@ msgstr "Войти"
 
 msgid "Offers page"
 msgstr "Страница предложений"
+
+msgid "Thanks for registration on the website"
+msgstr "Благодарим за регистрацию на сайте"
 
 msgid "Add to viewed"
 msgstr "Добавить в просматриваемые"

@@ -73,7 +73,7 @@ def offer_request_counter(request):
 
 
 def _send_mail(offer_request):
-    subject = 'Offer request message'
+    subject = _('Offer request message')
     message = render_to_string(
         'Manager/Messages/offer_request_message.html',
         {
@@ -86,6 +86,5 @@ def _send_mail(offer_request):
         from_email = settings.EMAIL_HOST_USER
         to_list = [offer_request.user.email, settings.EMAIL_HOST_USER]
         send_mail(subject, message, from_email, to_list, fail_silently=True)
-        print('sent')
     except Exception:
         print('SEND ERROR!')

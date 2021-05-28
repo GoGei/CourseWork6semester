@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-28 10:09+0000\n"
+"POT-Creation-Date: 2021-05-28 10:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,6 +100,9 @@ msgstr ""
 
 #, python-format
 msgid "Offer \"%s\" was successfully restored"
+msgstr ""
+
+msgid "Offer request message"
 msgstr ""
 
 msgid "Address"
@@ -351,6 +354,9 @@ msgstr ""
 msgid "Enter email"
 msgstr ""
 
+msgid "Registration"
+msgstr ""
+
 msgid "Account"
 msgstr ""
 
@@ -382,6 +388,9 @@ msgid "Sign in"
 msgstr ""
 
 msgid "Offers page"
+msgstr ""
+
+msgid "Thanks for registration on the website"
 msgstr ""
 
 msgid "Add to viewed"

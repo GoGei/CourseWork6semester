@@ -83,8 +83,13 @@
 <script src="{% static 'js/bootbox.min.js' %}"></script>
 <script src="{% static 'js/jquery.cookie.js' %}"></script>
 <script src="{% static 'js/select2.min.js' %}"></script>
+<script src="{% static 'js/jquery.inputmask.bundle.js' %}"></script>
 <script src="{% static 'js/langswitcher.js' %}"></script>
 {% block extra-js %}
 {% endblock %}
+
+<script>
+    $('#id_phone').inputmask('+380 (99) 999-9999');
+</script>
 </body>
 </html>
