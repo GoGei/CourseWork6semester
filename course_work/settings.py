@@ -277,7 +277,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
@@ -295,7 +295,7 @@ STATICFILES_DIRS = (
 
 ROW_PER_PAGE = 20
 
-INTERNAL_IPS = ('127.0.0.1','::1', '0.0.0.0')
+INTERNAL_IPS = ('127.0.0.1', '::1', '0.0.0.0')
 
 # if TOOLBAR_ENABLED:
 #     MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
