@@ -1,0 +1,2 @@
+python manage.py makemessages --no-location -a
+python manage.py compilemessages
