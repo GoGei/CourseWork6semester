@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^add/$', views.manager_add, name='manager-add'),
     url(r'^(?P<manager_id>\d+)/edit/$', views.manager_edit, name='manager-edit'),
     url(r'^(?P<manager_id>\d+)/details/$', views.manager_details, name='manager-details'),
-    url(r'^(?P<manager_id>\d+)/archive/$', views.manager_archive, name='manager-archive'),
+    url(r'^(?P<manager_id>\d+)/delete/$', views.manager_delete, name='manager-delete'),
 ]

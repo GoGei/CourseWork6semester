@@ -72,8 +72,15 @@ def manager_details(request, manager_id):
 
 
 @manager_required
-def manager_archive(request, manager_id):
+def manager_delete(request, manager_id):
     manager = get_object_or_404(User, pk=manager_id)
-    manager.is_active = False
-    messages.success(request, _('User "%s" profile was successfully archived') % manager.email)
+    if manager.is_superuser:
+        messages.warning(request, _('Cannot archive superuser %s!') % manager.email)
+        return redirect(reverse('manager-list'))
+    if manager.email == request.user.email:
+        messages.warning(request, _('Cannot archive user that is currently logged in %s!') % manager.email)
+        return redirect(reverse('manager-list'))
+    email = manager.email
+    manager.delete()
+    messages.success(request, _('Manager "%s" profile was successfully deleted') % email)
     return redirect(reverse('manager-list'))

@@ -23,6 +23,12 @@ class DealFileForm(forms.RequestForm):
 
     def clean(self):
         cleaned_data = self.cleaned_data
+
+        if cleaned_data.get('file') and (cleaned_data.get('file_type') == DealFile.GALLERY or cleaned_data.get('file_type') == DealFile.COVER) or \
+                cleaned_data.get('image') and cleaned_data.get('file_type') == DealFile.DOCUMENT or \
+                cleaned_data.get('file') and cleaned_data.get('image'):
+            raise forms.ValidationError(_('Enter correct file extension and not load both of them.'))
+
         return cleaned_data
 
     def save(self):

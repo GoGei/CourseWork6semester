@@ -3,7 +3,7 @@
         {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
     {% trans 'Edit' %}
 </a>
-<a type="button" href="{% url 'manager-archive' item.id %}?reverse=
+<a type="button" href="{% url 'manager-delete' item.id %}?reverse=
     {{ request.path }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">
     {% trans 'Delete' %}
 </a>
