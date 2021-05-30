@@ -1,6 +1,6 @@
-config/
+config/*
 env/*
-media/
-static/
+media/*
+static/*
 *.mo
 .idea/*
