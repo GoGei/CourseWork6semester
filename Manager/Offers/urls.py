@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/archive/$', views.offer_archive, name='offer-archive'),
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/restore/$', views.offer_restore, name='offer-restore'),
 
+    url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/pick-up-denied/$', views.offer_pick_up_denied, name='offer-pick-up-denied'),
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/pick-up/$', views.offer_pick_up, name='offer-pick-up'),
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/close/$', views.offer_close, name='offer-close'),
     url(r'^(?P<state>\w+)/(?P<offer_id>\d+)/deny/$', views.offer_deny, name='offer-deny'),

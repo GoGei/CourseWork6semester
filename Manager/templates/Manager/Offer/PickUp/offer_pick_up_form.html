@@ -19,6 +19,11 @@
             </div>
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
+                    {% include "base_form_field.html" with field=form.body.price %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
                     {% include "base_form_field.html" with field=form.body.creator %}
                 </div>
             </div>

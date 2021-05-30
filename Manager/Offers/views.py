@@ -155,6 +155,19 @@ def offer_restore(request, state, offer_id):
 
 
 @manager_required
+def offer_pick_up_denied(request, state, offer_id):
+    offer = get_object_or_404(Offer, pk=offer_id)
+    if offer.archived:
+        messages.warning(request, _('Offer %s archived!') % offer.pk)
+        return redirect(reverse('offer-list', args=[state]))
+    offer.state = Offer.PICK_UP
+    offer.manager = request.user
+    offer.save()
+    messages.success(request, _('Offer "%s" was successfully pick up from deny') % offer.pk)
+    return redirect(reverse('offer-list', args=[state]))
+
+
+@manager_required
 def offer_pick_up(request, state, offer_id):
     offer = get_object_or_404(Offer, pk=offer_id)
     if offer.archived:
@@ -190,8 +203,8 @@ def offer_deny(request, state, offer_id):
 @manager_required
 def offer_close(request, state, offer_id):
     offer = get_object_or_404(Offer, pk=offer_id)
-    if offer.archived:
-        messages.warning(request, _('Offer %s archived!') % offer.pk)
+    if offer.archived or not offer.clients.all().exists():
+        messages.warning(request, _('Offer %s archived or has no clients!') % offer.pk)
         return redirect(reverse('offer-list', args=[state]))
     offer.state = Offer.CLOSED
     offer.save()

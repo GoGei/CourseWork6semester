@@ -32,8 +32,8 @@
                     <td>{{ item.creator|default:'-' }}</td>
                     <td>{{ item.manager|default:'-' }}</td>
                     <td>{{ item.clients.all|default:'-'|join:', ' }}</td>
-                    <td>{{ item.price|default:'-' }}</td>
                     <td>{{ item.address|default:'-' }}</td>
+                    <td>{{ item.price|default:'-' }}</td>
                     <td>
                         {% if not item.archived %}
                         {% trans 'Not archived' %}
