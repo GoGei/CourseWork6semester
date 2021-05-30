@@ -21,16 +21,18 @@
                 <th onclick="sortTableBy(document.getElementById('id_table'), 0)">{% trans 'Creator' %}</th>
                 <th onclick="sortTableBy(document.getElementById('id_table'), 1)">{% trans 'Manager' %}</th>
                 <th onclick="sortTableBy(document.getElementById('id_table'), 2)">{% trans 'Client' %}</th>
-                <th>{% trans 'Address' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 3)">{% trans 'Price' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 4)">{% trans 'Address' %}</th>
             </tr>
             </thead>
             <tbody>
             {% for item in qs %}
                 <tr>
-                    <td>{{ item.creator }}</td>
-                    <td>{{ item.manager }}</td>
+                    <td>{{ item.creator|default:'-' }}</td>
+                    <td>{{ item.manager|default:'-' }}</td>
                     <td>{{ item.clients.all|default:'-'|join:', ' }}</td>
-                    <td>{{ item.address }}</td>
+                    <td>{{ item.price|default:'-' }}</td>
+                    <td>{{ item.address|default:'-' }}</td>
                 </tr>
             {% endfor %}
             </tbody>

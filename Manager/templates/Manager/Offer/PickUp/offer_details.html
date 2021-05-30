@@ -42,6 +42,10 @@
                     <div class="col-sm-7">{{ offer.address|default:"-" }}</div>
                 </div>
                 <div class="row form-group">
+                    <div class="col-sm-5">{% trans 'Price' %}</div>
+                    <div class="col-sm-7">{{ offer.price|default:"-" }}</div>
+                </div>
+                <div class="row form-group">
                     <div class="col-sm-5">{% trans 'State' %}</div>
                     <div class="col-sm-7">{{ offer.state|default:"-" }}</div>
                 </div>

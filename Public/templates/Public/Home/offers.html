@@ -9,16 +9,18 @@
             <div class="media">
                 <img class="rounded-circle account-img" src="{% static 'img/default-img.jpeg' %}" alt="Alternative"/>
             </div>
-            <div class="small">{{ offer.address }}</div>
-            <div class="small">{{ offer.header|default:"-"|escape }}</div>
+            <div>{{ offer.address|default:'-' }}</div>
+            <div>{{ offer.price|default:'-' }}</div>
+            <div>{{ offer.header|default:"-"|escape }}</div>
         </a>
         {% else %}
         <a href="#" data-toggle="modal" data-target="#bannersModal">
             <div class="media">
                 <img class="rounded-circle account-img" src="{% static 'img/default-img.jpeg' %}" alt="Alternative"/>
             </div>
-            <div class="small">{{ offer.address }}</div>
-            <div class="small">{{ offer.header|default:"-"|escape }}</div>
+            <div>{{ offer.address|default:'-' }}</div>
+            <div>{{ offer.price|default:'-' }}</div>
+            <div>{{ offer.header|default:"-"|escape }}</div>
         </a>
         {% endif %}
     {% endfor %}

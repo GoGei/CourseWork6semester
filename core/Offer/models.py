@@ -28,6 +28,8 @@ class Offer(CrmMixin, TranslateMixin):
     text_data = JSONField(default=dict)  # {lang_code: data}
     state = models.CharField(max_length=16, choices=STATES)
 
+    price = models.PositiveIntegerField(default=0)
+
     class Meta:
         db_table = 'offer'
 

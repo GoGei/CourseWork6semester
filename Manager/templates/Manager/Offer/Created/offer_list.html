@@ -20,7 +20,8 @@
             <tr>
                 <th onclick="sortTableBy(document.getElementById('id_table'), 0)">{% trans 'Creator' %}</th>
                 <th onclick="sortTableBy(document.getElementById('id_table'), 1)">{% trans 'Address' %}</th>
-                <th onclick="sortTableBy(document.getElementById('id_table'), 2)">{% trans 'Archived' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 2)">{% trans 'Price' %}</th>
+                <th onclick="sortTableBy(document.getElementById('id_table'), 3)">{% trans 'Archived' %}</th>
                 <th>{% trans 'Actions' %}</th>
             </tr>
             </thead>
@@ -29,6 +30,7 @@
                 <tr>
                     <td>{{ item.creator }}</td>
                     <td>{{ item.address }}</td>
+                    <td>{{ item.price }}</td>
                     <td>
                         {% if not item.archived %}
                         {% trans 'Not archived' %}
