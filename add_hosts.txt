@@ -1,5 +1,5 @@
 sudo vim /etc/hosts
 C:\Windows\System32\Drivers\etc\hosts
 
-127.0.0.1 manager.mycoursework.local
-127.0.0.1         mycoursework.local
+127.0.0.1 manager.bestrealtor.local
+127.0.0.1         bestrealtor.local

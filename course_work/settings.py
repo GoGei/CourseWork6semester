@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SITE_ROOT = BASE_DIR
 
-SITE_URL = 'mycoursework.local'
+SITE_URL = 'bestrealtor.local'
 SITE_SCHEME = "http"
 PARENT_HOST = ".%s" % SITE_URL
 HOST_PORT = '8000'
@@ -32,7 +32,7 @@ SITE = "%s://%s:%s" % (SITE_SCHEME, SITE_URL, HOST_PORT)
 HOST_SCHEME = "http"
 
 HOST_SCHEME = 'http'
-PARENT_HOST = ".mycoursework.local"
+PARENT_HOST = ".bestrealtor.local"
 HOST_PORT = '8000'
 
 # Quick-start development settings - unsuitable for production
@@ -90,7 +90,7 @@ MIDDLEWARE = (
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
-    'http://manager.mycoursework.local',
+    'http://manager.bestrealtor.local',
 ]
 
 ROOT_HOSTCONF = 'course_work.hosts'
@@ -143,9 +143,9 @@ WSGI_APPLICATION = 'course_work.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'coursework6semester',
-        'USER': 'my_course6_root',
-        'PASSWORD': 'my_course6_root_password',
+        'NAME': 'bestrealtor',
+        'USER': 'bestrealtor',
+        'PASSWORD': 'bestrealtor_password',
         'HOST': 'localhost',
         'PORT': '5432',
     }
