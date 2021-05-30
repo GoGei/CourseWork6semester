@@ -14,6 +14,7 @@
             {% endfor %}
         </div>
         <p>{{ offer.address|default:"-" }}</p>
+        <p>{{ offer.price|default:"-" }}</p>
         <p>{{ offer.header|default:"-"|escape }}</p>
         <p>{{ offer.text|default:"-"|escape }}</p>
     {% endwith %}

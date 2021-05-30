@@ -10,6 +10,7 @@ from core.Utils.lang_formset import BaseLangFormSet
 
 class OfferForm(forms.RequestForm):
     address = forms.CharField(label=_('Address'), max_length=128)
+    price = forms.IntegerField(label=_('Price'), min_value=0)
 
     def __init__(self, *args, **kwargs):
         self.model = Offer
@@ -44,6 +45,7 @@ class CreatedOfferAddForm(CreatedOfferForm):
 
 class PickUpOfferForm(forms.RequestForm):
     address = forms.CharField(label=_('Address'), max_length=128)
+    price = forms.IntegerField(label=_('Price'), min_value=0)
     creator = forms.TypedChoiceField(label=_('Creator'),
                                      widget=forms.Select(attrs={'class': 'form-control select2',
                                                                 'data-placeholder': _('Select from the list')}),
