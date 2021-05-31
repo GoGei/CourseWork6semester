@@ -254,11 +254,11 @@ def offer_export(request, state, export_to):
         response['Content-Disposition'] = 'attachment; filename="offers.csv"'
 
         writer = csv.writer(response)
-        writer.writerow(['creator', 'manager', 'clients', 'address'])
+        writer.writerow(['creator', 'manager', 'clients', 'address', 'price'])
 
         offers = Offer.objects.active().filter(state=Offer.CLOSED).all()
         for offer in offers:
-            o = [str(offer.creator), str(offer.manager), ', '.join([str(client) for client in offer.clients.all()]), str(offer.address)]
+            o = [str(offer.creator), str(offer.manager), ', '.join([str(client) for client in offer.clients.all()]), str(offer.address), str(offer.price)]
             writer.writerow(o)
         return response
     elif export_to == 'xls':

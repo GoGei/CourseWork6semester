@@ -38,5 +38,35 @@
             </table>
 
         </div>
+        </div>
+    {% endif %}
+    <h1>{% trans 'Closed of denied offers' %}</h1>
+    {% if not closed_offers %}
+        {% trans 'No closed offers' %}
+    {% else %}
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table med-table-summary table-caption">
+                    <thead>
+                    <tr>
+                        <th>{% trans 'Offer' %}</th>
+                        <th>{% trans 'State' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in closed_offers %}
+                        <tr>
+                            <td>
+                                {{ item.offer|default:'-' }}
+                            <td>
+                                {{ item.offer.get_state_display|default:'-' }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
     {% endif %}
 {% endblock %}

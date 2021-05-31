@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 
 from core.Offer.models import Offer
@@ -11,11 +12,13 @@ from core.OfferRequest.models import OfferRequest
 @login_required
 def account_user(request):
     user = request.user
-    viewed_offers = OfferRequest.objects.active().filter(user=user).all().order_by('-created')
+    viewed_offers = OfferRequest.objects.active().filter(user=user, offer__state=Offer.PICK_UP).all().order_by('-created')
+    closed_offers = OfferRequest.objects.active().filter(Q(offer__state=Offer.CLOSED) | Q(offer__state=Offer.DENY), user=user).all().order_by('-created')
 
     return render(request, 'Public/Account/account.html',
                   {'user': user,
-                   'viewed_offers': viewed_offers})
+                   'viewed_offers': viewed_offers,
+                   'closed_offers': closed_offers})
 
 
 @login_required

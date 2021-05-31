@@ -58,8 +58,8 @@ class PickUpOfferForm(forms.RequestForm):
                                              widget=forms.SelectMultiple(
                                                  attrs={'class': 'select2 select2-multiple', 'data-placeholder': _(
                                                      'Select from the list')}),
-                                             coerce=lambda pk: User.objects.filter(is_staff=False).get(pk=pk)
-                                             )
+                                             coerce=lambda pk: User.objects.filter(is_staff=False).get(pk=pk),
+                                             required=False)
 
     def __init__(self, *args, **kwargs):
         self.model = Offer
